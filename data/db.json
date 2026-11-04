@@ -114,6 +114,13 @@
       "whatsappE164": "+221764175484",
       "majeur": true,
       "creeLe": "2026-11-04T14:22:32Z"
+    },
+    {
+      "id": "cnt_1793807813_664",
+      "nom": "Lamine Diack",
+      "whatsappE164": "+221777777777",
+      "majeur": true,
+      "creeLe": "2026-11-04T15:56:53Z"
     }
   ],
   "participations": [
@@ -141,6 +148,15 @@
       "evenementId": "evt_dakar_gala_2026",
       "jetonGalerie": "pl_444366_6091",
       "reconnuLe": "2026-11-04T15:28:11Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793807813_230",
+      "contactId": "cnt_1793807813_664",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_329445_7813",
+      "reconnuLe": "2026-11-04T15:56:53Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
     }
@@ -199,6 +215,24 @@
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T15:28:11Z",
       "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793807813_1",
+      "participationId": "part_1793807813_230",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T15:56:53Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793807813_2",
+      "participationId": "part_1793807813_230",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T15:56:53Z",
+      "borneId": "borne_ipad_01"
     }
   ],
   "liensPhotos": [
@@ -255,6 +289,30 @@
       "participationId": "part_1793806091_947",
       "photoId": "photo_02",
       "similarite": 90.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793807813_839",
+      "participationId": "part_1793807813_230",
+      "photoId": "photo_02",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793807813_288",
+      "participationId": "part_1793807813_230",
+      "photoId": "photo_04",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793807813_488",
+      "participationId": "part_1793807813_230",
+      "photoId": "photo_03",
+      "similarite": 90.3,
       "zone": "probable",
       "statut": "actif"
     }

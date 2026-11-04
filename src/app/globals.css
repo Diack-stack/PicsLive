@@ -1,58 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-jost: 'Jost', sans-serif;
-}
-
 body {
-  background-color: #0B192C;
-  color: #FDFBF7;
-  font-family: var(--font-jost);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #070D18;
+  color: #F8FAFC;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   user-select: none;
   -webkit-touch-callout: none;
 }
 
-/* Glassmorphism card styles */
-.glass-panel {
-  background: rgba(19, 47, 76, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(192, 138, 62, 0.22);
+/* Dark Luxury Glassmorphism */
+.luxury-card {
+  background: rgba(17, 28, 53, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
-.glass-panel-hover {
-  transition: all 0.25s ease-in-out;
+.luxury-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel-hover:hover {
-  border-color: rgba(192, 138, 62, 0.5);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+.luxury-card-hover:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 60px -15px rgba(212, 175, 55, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
-/* Boutons tactiles Kiosk */
+/* Bouton Or Satiné avec biseau de lumière */
+.btn-gold {
+  background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #B8860B 100%);
+  color: #070D18;
+  box-shadow: 0 12px 28px -6px rgba(212, 175, 55, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.25s ease;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px -6px rgba(212, 175, 55, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.btn-gold:active {
+  transform: scale(0.98);
+}
+
 .kiosk-btn {
-  transition: transform 0.1s ease, box-shadow 0.2s ease;
-  min-height: 56px;
+  min-height: 58px;
   touch-action: manipulation;
 }
 
-.kiosk-btn:active {
-  transform: scale(0.97);
+/* Laser de visée */
+@keyframes goldLaser {
+  0%, 100% { top: 7%; opacity: 0.7; }
+  50% { top: 89%; opacity: 1; }
+}
+.laser-line {
+  animation: goldLaser 2.3s ease-in-out infinite;
 }
 
-/* Viseur de caméra signature PicsLive */
-.viewfinder-corner {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border-color: #C08A3E;
-  pointer-events: none;
+/* Floating Action Bar */
+.floating-bar {
+  background: rgba(17, 28, 53, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 /* Custom scrollbars */
@@ -61,13 +78,12 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B192C;
+  background: #070D18;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E3E62;
+  background: #182747;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C08A3E;
+  background: #D4AF37;
 }
-
