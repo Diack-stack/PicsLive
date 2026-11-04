@@ -26,6 +26,78 @@
   ],
   "photos": [
     {
+      "id": "photo_1793814422_93",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:02Z",
+      "url": "/uploads/photo_1793814422_105.jpg",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_1793814422_42",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:02Z",
+      "url": "/uploads/photo_1793814422_636.jpg",
+      "statut": "indexée",
+      "visagesDetectes": 3
+    },
+    {
+      "id": "photo_1793814422_62",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:02Z",
+      "url": "/uploads/photo_1793814422_715.jpg",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_1793814422_63",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:02Z",
+      "url": "/uploads/photo_1793814422_135.jpg",
+      "statut": "indexée",
+      "visagesDetectes": 3
+    },
+    {
+      "id": "photo_1793814422_82",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:02Z",
+      "url": "/uploads/photo_1793814421_101.JPG",
+      "statut": "indexée",
+      "visagesDetectes": 2
+    },
+    {
+      "id": "photo_1793814421_28",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:01Z",
+      "url": "/uploads/photo_1793814421_653.JPG",
+      "statut": "indexée",
+      "visagesDetectes": 2
+    },
+    {
+      "id": "photo_1793814421_58",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:01Z",
+      "url": "/uploads/photo_1793814420_156.JPG",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_1793814420_68",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Canon R6 Mark II (SFTP)",
+      "priseLe": "2026-11-04T17:47:00Z",
+      "url": "/uploads/photo_1793814420_594.JPG",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
       "id": "photo_01",
       "evenementId": "evt_dakar_gala_2026",
       "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
@@ -159,6 +231,42 @@
       "reconnuLe": "2026-11-04T15:56:53Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793814534_743",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_535457_4534",
+      "reconnuLe": "2026-11-04T17:48:54Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793815072_709",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_185122_5072",
+      "reconnuLe": "2026-11-04T17:57:52Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793815289_866",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_382674_5289",
+      "reconnuLe": "2026-11-04T18:01:29Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793815585_293",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_115093_5585",
+      "reconnuLe": "2026-11-04T18:06:25Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
     }
   ],
   "consentements": [
@@ -232,6 +340,78 @@
       "accepte": false,
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T15:56:53Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793814534_1",
+      "participationId": "part_1793814534_743",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T17:48:54Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793814534_2",
+      "participationId": "part_1793814534_743",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T17:48:54Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815072_1",
+      "participationId": "part_1793815072_709",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T17:57:52Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815072_2",
+      "participationId": "part_1793815072_709",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T17:57:52Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815289_1",
+      "participationId": "part_1793815289_866",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:01:29Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815289_2",
+      "participationId": "part_1793815289_866",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:01:29Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815585_1",
+      "participationId": "part_1793815585_293",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:06:25Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793815585_2",
+      "participationId": "part_1793815585_293",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:06:25Z",
       "borneId": "borne_ipad_01"
     }
   ],
@@ -313,6 +493,94 @@
       "participationId": "part_1793807813_230",
       "photoId": "photo_03",
       "similarite": 90.3,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793814534_754",
+      "participationId": "part_1793814534_743",
+      "photoId": "photo_1793814422_62",
+      "similarite": 98.7,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793814534_733",
+      "participationId": "part_1793814534_743",
+      "photoId": "photo_01",
+      "similarite": 92.4,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793814534_257",
+      "participationId": "part_1793814534_743",
+      "photoId": "photo_05",
+      "similarite": 88.6,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815072_428",
+      "participationId": "part_1793815072_709",
+      "photoId": "photo_1793814421_28",
+      "similarite": 97.4,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815072_121",
+      "participationId": "part_1793815072_709",
+      "photoId": "photo_01",
+      "similarite": 89.1,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815072_556",
+      "participationId": "part_1793815072_709",
+      "photoId": "photo_1793814422_42",
+      "similarite": 91.3,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815289_179",
+      "participationId": "part_1793815289_866",
+      "photoId": "photo_01",
+      "similarite": 94.7,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815289_910",
+      "participationId": "part_1793815289_866",
+      "photoId": "photo_02",
+      "similarite": 92.9,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815585_720",
+      "participationId": "part_1793815585_293",
+      "photoId": "photo_04",
+      "similarite": 95.7,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815585_575",
+      "participationId": "part_1793815585_293",
+      "photoId": "photo_05",
+      "similarite": 90.3,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793815585_279",
+      "participationId": "part_1793815585_293",
+      "photoId": "photo_1793814422_63",
+      "similarite": 88.5,
       "zone": "probable",
       "statut": "actif"
     }

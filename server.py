@@ -493,7 +493,7 @@ HTML_BORNE = """<!DOCTYPE html>
       <h2 class="text-2xl font-extrabold text-white mb-1">Scannez pour ouvrir</h2>
       <p class="text-xs text-slate-400 mb-6">Pointez l'appareil photo de votre smartphone vers l'écran</p>
       <div class="bg-white p-5 rounded-3xl inline-block shadow-2xl border-4 border-[#D4AF37]/30 mb-6">
-        <canvas id="qrCanvas" class="w-52 h-52 sm:w-60 sm:h-60 mx-auto"></canvas>
+        <img id="qrImage" src="" alt="QR Code Galerie" class="w-52 h-52 sm:w-60 sm:h-60 mx-auto rounded-2xl object-contain bg-white">
       </div>
       <div class="mb-6">
         <a id="lnkDirectGallery" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#D4AF37] hover:underline">
@@ -592,16 +592,21 @@ HTML_BORNE = """<!DOCTYPE html>
         });
         const data = await res.json();
         if (data.success) {
-          QRCode.toCanvas(document.getElementById('qrCanvas'), data.galleryUrl, { width: 240, margin: 1 });
+          goToStep('result');
           document.getElementById('lnkDirectGallery').href = data.galleryUrl;
           document.getElementById('badgeFound').innerText = `${data.totalCount || 2} photos trouvées pour vous`;
-          goToStep('result');
+          
+          const qrImg = document.getElementById('qrImage');
+          if (qrImg) {
+            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=070D18&bgcolor=FFFFFF&margin=10&data=' + encodeURIComponent(data.galleryUrl);
+          }
           startResetTimer();
         } else {
           alert(data.error || 'Erreur');
         }
       } catch (err) {
-        alert('Erreur réseau');
+        console.error('Erreur recognize:', err);
+        alert('Erreur réseau. Veuillez réessayer.');
       } finally {
         btn.innerText = 'Générer mon QR Code';
         btn.disabled = false;
