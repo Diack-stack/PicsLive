@@ -128,6 +128,13 @@
       "whatsappE164": "+221781112233",
       "majeur": true,
       "creeLe": "2026-11-04T18:32:01Z"
+    },
+    {
+      "id": "cnt_1793827403_608",
+      "nom": "Aziz Fast",
+      "whatsappE164": "+221778765643",
+      "majeur": true,
+      "creeLe": "2026-11-04T21:23:23Z"
     }
   ],
   "participations": [
@@ -228,6 +235,56 @@
       "jetonGalerie": "pl_242118_7121",
       "nom": "Awa Ndiaye",
       "reconnuLe": "2026-11-04T18:32:01Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793827403_177",
+      "contactId": "cnt_1793827403_608",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_330811_7403",
+      "nom": "AZIZ",
+      "reconnuLe": "2026-11-04T21:23:23Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793827471_401",
+      "contactId": "cnt_1793827403_608",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_948766_7471",
+      "nom": "Aziz",
+      "reconnuLe": "2026-11-04T21:24:31Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793827578_767",
+      "contactId": "cnt_1793827403_608",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_997015_7578",
+      "nom": "Aziz",
+      "reconnuLe": "2026-11-04T21:26:18Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793827588_649",
+      "contactId": "cnt_1793827403_608",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_441413_7588",
+      "nom": "Aziz Test",
+      "reconnuLe": "2026-11-04T21:26:28Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793827611_757",
+      "contactId": "cnt_1793827403_608",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_245616_7611",
+      "nom": "Aziz Fast",
+      "reconnuLe": "2026-11-04T21:26:51Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
     }
@@ -430,6 +487,96 @@
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T18:32:01Z",
       "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827403_1",
+      "participationId": "part_1793827403_177",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:23:23Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827403_2",
+      "participationId": "part_1793827403_177",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:23:23Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827471_1",
+      "participationId": "part_1793827471_401",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:24:31Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827471_2",
+      "participationId": "part_1793827471_401",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:24:31Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827578_1",
+      "participationId": "part_1793827578_767",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:18Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827578_2",
+      "participationId": "part_1793827578_767",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:18Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827588_1",
+      "participationId": "part_1793827588_649",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:28Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827588_2",
+      "participationId": "part_1793827588_649",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:28Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827611_1",
+      "participationId": "part_1793827611_757",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:51Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793827611_2",
+      "participationId": "part_1793827611_757",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T21:26:51Z",
+      "borneId": "borne_ipad_01"
     }
   ],
   "liensPhotos": [
@@ -575,6 +722,94 @@
       "photoId": "photo_1793814422_93",
       "similarite": 92.9,
       "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827403_940",
+      "participationId": "part_1793827403_177",
+      "photoId": "photo_1793814422_63",
+      "similarite": 96.7,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827403_444",
+      "participationId": "part_1793827403_177",
+      "photoId": "photo_1793814422_82",
+      "similarite": 89.1,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827471_264",
+      "participationId": "part_1793827471_401",
+      "photoId": "photo_1793814421_58",
+      "similarite": 97.1,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827471_231",
+      "participationId": "part_1793827471_401",
+      "photoId": "photo_1793814420_68",
+      "similarite": 88.4,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827578_303",
+      "participationId": "part_1793827578_767",
+      "photoId": "photo_1793814420_68",
+      "similarite": 97.6,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827578_502",
+      "participationId": "part_1793827578_767",
+      "photoId": "photo_1793814422_93",
+      "similarite": 89.3,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827588_715",
+      "participationId": "part_1793827588_649",
+      "photoId": "photo_1793814422_42",
+      "similarite": 96.2,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827588_475",
+      "participationId": "part_1793827588_649",
+      "photoId": "photo_1793814421_58",
+      "similarite": 93.0,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827611_981",
+      "participationId": "part_1793827611_757",
+      "photoId": "photo_1793814420_68",
+      "similarite": 96.8,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827611_738",
+      "participationId": "part_1793827611_757",
+      "photoId": "photo_1793814422_82",
+      "similarite": 91.1,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793827611_408",
+      "participationId": "part_1793827611_757",
+      "photoId": "photo_1793814422_42",
+      "similarite": 91.7,
+      "zone": "probable",
       "statut": "actif"
     }
   ]

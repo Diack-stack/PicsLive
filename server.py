@@ -10,11 +10,18 @@ import json
 import time
 import random
 import base64
+import io
 from pathlib import Path
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse
 
-# Import Pillow pour le traitement d'image réel si disponible
+# Import Pillow & QRCode pour génération locale instantanée sans internet
+try:
+    import qrcode
+    QRCODE_AVAILABLE = True
+except ImportError:
+    QRCODE_AVAILABLE = False
+
 try:
     from PIL import Image, ImageOps, ImageEnhance, ImageDraw, ImageFont
     PIL_AVAILABLE = True
@@ -28,6 +35,22 @@ DB_FILE = DATA_DIR / "db.json"
 PORT = 3000
 
 UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+
+def generate_qr_base64(url: str) -> str:
+    """Génère un QR code PNG base64 ultra-rapide localement (0ms de latence externe)"""
+    if not QRCODE_AVAILABLE:
+        return ""
+    try:
+        qr = qrcode.QRCode(box_size=10, border=2)
+        qr.add_data(url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="#070D18", back_color="white")
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode("utf-8")
+    except Exception as e:
+        print(f"Erreur QR local: {e}")
+        return ""
 
 def get_db():
     if not DB_FILE.exists():
@@ -598,7 +621,7 @@ HTML_BORNE = """<!DOCTYPE html>
           
           const qrImg = document.getElementById('qrImage');
           if (qrImg) {
-            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=070D18&bgcolor=FFFFFF&margin=10&data=' + encodeURIComponent(data.galleryUrl);
+            qrImg.src = data.qrCode || ('https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=070D18&bgcolor=FFFFFF&margin=10&data=' + encodeURIComponent(data.galleryUrl));
           }
           startResetTimer();
         } else {
@@ -1070,10 +1093,13 @@ HTML_ADMIN = """<!DOCTYPE html>
 
 
 class PicsLiveHandler(SimpleHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Connection", "close")
         super().end_headers()
 
     def do_OPTIONS(self):
@@ -1350,10 +1376,14 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
 
             save_db(db)
 
+            gallery_url = f"http://localhost:{PORT}/galerie/{token}"
+            qr_base64 = generate_qr_base64(gallery_url)
+
             res = {
                 "success": True,
                 "jetonGalerie": token,
-                "galleryUrl": f"http://localhost:{PORT}/galerie/{token}",
+                "galleryUrl": gallery_url,
+                "qrCode": qr_base64,
                 "totalCount": len(sample),
             }
             self.send_response(200)
@@ -1406,7 +1436,12 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     print(f"PicsLive Dark Luxury Server actif sur http://localhost:{PORT}")
-    httpd = HTTPServer(("0.0.0.0", PORT), PicsLiveHandler)
+    httpd = ThreadingHTTPServer(("0.0.0.0", PORT), PicsLiveHandler)
+    httpd.daemon_threads = True
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        httpd.server_close()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

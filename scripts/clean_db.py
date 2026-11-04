@@ -42,3 +42,4 @@ with open("data/db.json", "w", encoding="utf-8") as f:
     json.dump(db, f, indent=2, ensure_ascii=False)
 
 print("Database successfully updated!")
+
