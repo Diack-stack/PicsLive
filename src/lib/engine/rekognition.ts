@@ -31,7 +31,8 @@ export class RekognitionFaceEngine implements FaceEngine {
   async searchFacesBySelfie(
     collectionId: string,
     _selfieBase64OrUrl: string,
-    _thresholds: { sure?: number; sur?: number; probable: number } = { sure: 95, probable: 85 }
+    _thresholds: { sure?: number; sur?: number; probable: number } = { sure: 95, probable: 85 },
+    _guestHint?: string
   ): Promise<SearchResult> {
     console.log(`[AWS Rekognition] Searching in collection ${collectionId}`);
     // Placeholder for @aws-sdk/client-rekognition SearchFacesByImageCommand

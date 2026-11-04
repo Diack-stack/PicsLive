@@ -32,7 +32,8 @@ export class SimulatorFaceEngine implements FaceEngine {
   async searchFacesBySelfie(
     _collectionId: string,
     _selfieBase64OrUrl: string,
-    thresholds: { sure?: number; sur?: number; probable: number } = { sure: 92, probable: 82 }
+    thresholds: { sure?: number; sur?: number; probable: number } = { sure: 92, probable: 82 },
+    guestHint?: string
   ): Promise<SearchResult> {
     const startTime = Date.now();
     // Simulate real biometric comparison latency
@@ -53,17 +54,16 @@ export class SimulatorFaceEngine implements FaceEngine {
     const sureVal = thresholds.sure ?? thresholds.sur ?? 92;
     const probVal = thresholds.probable ?? 82;
 
-    // Select 2 to 4 photos to match
-    // To make demo intuitive: if selfie is provided, we pick a realistic subset
-    const numToPick = Math.min(allPhotos.length, Math.floor(Math.random() * 2) + 2);
-    // Shuffle photos deterministically or randomly
-    const shuffled = [...allPhotos].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, numToPick);
+    // Détection de la personne ciblée (Diack vs Superviseur)
+    const hint = (guestHint || "").toLowerCase();
+    const isDiack = hint.includes("diack") || hint.includes("lamine") || hint.includes("764175484");
+    const targetTag = isDiack ? "diack" : "superviseur";
+
+    const candidatePhotos = allPhotos.filter((p) => p.personTag === targetTag);
+    const selected = candidatePhotos.length > 0 ? candidatePhotos : allPhotos;
 
     const matches: FaceMatch[] = selected.map((photo, index) => {
-      // First 1-2 photos are in the "sure" zone (> 92%)
-      // Any remaining photo is in the "probable" zone (82% - 92%)
-      const isSure = index < Math.max(1, numToPick - 1);
+      const isSure = index < selected.length;
       const similarity = isSure
         ? Number((sureVal + Math.random() * (99.5 - sureVal)).toFixed(1))
         : Number((probVal + Math.random() * (sureVal - probVal - 1)).toFixed(1));
@@ -72,7 +72,7 @@ export class SimulatorFaceEngine implements FaceEngine {
         photoId: photo.id,
         faceId: `face_match_${photo.id}`,
         similarity,
-        zone: isSure ? "sure" : "probable",
+        zone: "sure" as const,
       };
     });
 

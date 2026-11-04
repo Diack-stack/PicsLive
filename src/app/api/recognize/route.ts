@@ -46,15 +46,30 @@ export async function POST(request: Request) {
       majeur: Boolean(isMajeur),
     });
 
-    // 2. Création de la Participation et du jeton de galerie sécurisé
+    // 2. Recherche faciale par le moteur (AWS Rekognition ou Simulateur)
+    const thresholds = {
+      sure: event.seuils.sure ?? event.seuils.sur ?? 92,
+      probable: event.seuils.probable ?? 82,
+    };
+    const guestHint = `${nom} ${whatsapp}`;
+    const searchResult = await engine.searchFacesBySelfie(
+      event.collectionMoteur,
+      selfieBase64 || "",
+      thresholds,
+      guestHint
+    );
+    const matchedPhotoIds = searchResult.matches.map((m) => m.photoId);
+
+    // 3. Création de la Participation et du jeton de galerie autonome (stateless Vercel)
     const { participation, jetonGalerie } = dbService.createParticipation({
       contactId: contact.id,
       evenementId: event.id,
       nom: nom.trim(),
+      matchedPhotoIds,
       selfieUrl: selfieBase64 ? "data:image/jpeg;base64,..." : undefined,
     });
 
-    // 3. Enregistrement légal des Consentements (RGPD / CDP)
+    // 4. Enregistrement légal des Consentements (RGPD / CDP)
     const consentsToRecord: Array<{
       type: "photos" | "marketing" | "partage_organisateur";
       accepte: boolean;
@@ -73,17 +88,6 @@ export async function POST(request: Request) {
     }
 
     dbService.recordConsents(participation.id, consentsToRecord);
-
-    // 4. Recherche faciale par le moteur (AWS Rekognition ou Simulateur)
-    const thresholds = {
-      sure: event.seuils.sure ?? event.seuils.sur ?? 92,
-      probable: event.seuils.probable ?? 82,
-    };
-    const searchResult = await engine.searchFacesBySelfie(
-      event.collectionMoteur,
-      selfieBase64 || "",
-      thresholds
-    );
 
     // 5. Association des photos trouvées à la participation
     if (searchResult.matches.length > 0) {
