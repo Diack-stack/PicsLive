@@ -185,6 +185,7 @@ export const dbService = {
   createParticipation(params: {
     contactId: string;
     evenementId: string;
+    nom?: string;
     selfieUrl?: string;
   }): { participation: ParticipationData; jetonGalerie: string } {
     const db = getDb();
@@ -195,6 +196,7 @@ export const dbService = {
       contactId: params.contactId,
       evenementId: params.evenementId,
       jetonGalerie,
+      nom: params.nom,
       reconnuLe: new Date().toISOString(),
       nbPhotos: 0,
       statutRecuperation: "en_attente",

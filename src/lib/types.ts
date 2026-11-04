@@ -69,6 +69,7 @@ export interface ParticipationData {
   contactId: string;
   evenementId: string;
   jetonGalerie: string;
+  nom?: string;
   reconnuLe: string;
   nbPhotos: number;
   statutRecuperation: string;

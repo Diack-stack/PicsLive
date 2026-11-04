@@ -49,6 +49,7 @@ export async function POST(request: Request) {
     const { participation, jetonGalerie } = dbService.createParticipation({
       contactId: contact.id,
       evenementId: event.id,
+      nom: nom.trim(),
       selfieUrl: selfieBase64 ? "data:image/jpeg;base64,..." : undefined,
     });
 

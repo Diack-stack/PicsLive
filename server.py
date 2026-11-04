@@ -375,7 +375,7 @@ HTML_BORNE = """<!DOCTYPE html>
       <p class="text-sm text-slate-400 max-w-md mx-auto mb-10 leading-relaxed">
         Placez-vous devant l'objectif. Le système identifie vos apparitions sur les clichés de la soirée et crée votre collection privée.
       </p>
-      <button onclick="goToStep('consent')" class="btn-gold kiosk-btn w-full py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-3">
+      <button onclick="resetKioskInputs(); goToStep('consent')" class="btn-gold kiosk-btn w-full py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-3">
         <span>Retrouver mes photos</span>
         <svg class="w-5 h-5 text-[#070D18]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
@@ -627,10 +627,16 @@ HTML_BORNE = """<!DOCTYPE html>
       }, 1000);
     }
 
+    function resetKioskInputs() {
+      const inpN = document.getElementById('inpNom');
+      const inpT = document.getElementById('inpTel');
+      if (inpN) inpN.value = '';
+      if (inpT) inpT.value = '';
+    }
+
     function resetKiosk() {
       if (resetInterval) clearInterval(resetInterval);
-      document.getElementById('inpNom').value = '';
-      document.getElementById('inpTel').value = '';
+      resetKioskInputs();
       goToStep('welcome');
     }
   </script>
@@ -1167,10 +1173,13 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
                         "lienId": lien.get("id"),
                     })
 
+            # Nom de l'invité spécifique à cette participation (ou contact)
+            guest_nom = part.get("nom") or contact.get("nom") or "Invité d'honneur"
+
             res = {
                 "success": True,
                 "gallery": {
-                    "nom": contact.get("nom", "Invité d'honneur"),
+                    "nom": guest_nom,
                     "evenementNom": event.get("nom", "Événement"),
                     "date": event.get("date"),
                     "lieu": event.get("lieu"),
@@ -1265,8 +1274,8 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
 
         # API POST /api/recognize
         if path == "/api/recognize":
-            nom = data.get("nom", "Invité")
-            raw_phone = data.get("whatsapp", "")
+            nom = (data.get("nom") or "").strip() or "Invité"
+            raw_phone = (data.get("whatsapp") or "").strip()
             whatsapp_e164 = format_whatsapp(raw_phone)
             is_majeur = data.get("isMajeur", True)
             consent_mkt = data.get("consentMarketing", False)
@@ -1284,6 +1293,11 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
                     "creeLe": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 }
                 db["contacts"].append(contact)
+            else:
+                # Met à jour le nom si un nouveau nom est spécifié pour cette session
+                if nom and nom != "Invité":
+                    contact["nom"] = nom
+                contact["majeur"] = is_majeur
 
             token = f"pl_{random.randint(100000, 999999)}_{int(time.time()) % 10000}"
             part_id = f"part_{int(time.time())}_{random.randint(100, 999)}"
@@ -1292,6 +1306,7 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
                 "contactId": contact["id"],
                 "evenementId": event["id"],
                 "jetonGalerie": token,
+                "nom": nom,
                 "reconnuLe": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "nbPhotos": 2,
                 "statutRecuperation": "en_attente",

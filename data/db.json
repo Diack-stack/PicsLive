@@ -96,81 +96,9 @@
       "url": "/uploads/photo_1793814420_594.JPG",
       "statut": "indexée",
       "visagesDetectes": 1
-    },
-    {
-      "id": "photo_01",
-      "evenementId": "evt_dakar_gala_2026",
-      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
-      "priseLe": "2026-11-15T20:15:00Z",
-      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-      "statut": "indexée",
-      "visagesDetectes": 1
-    },
-    {
-      "id": "photo_02",
-      "evenementId": "evt_dakar_gala_2026",
-      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
-      "priseLe": "2026-11-15T20:22:00Z",
-      "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-      "statut": "indexée",
-      "visagesDetectes": 1
-    },
-    {
-      "id": "photo_03",
-      "evenementId": "evt_dakar_gala_2026",
-      "photographeNom": "Aïcha Ndiaye",
-      "priseLe": "2026-11-15T20:30:00Z",
-      "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
-      "statut": "indexée",
-      "visagesDetectes": 1
-    },
-    {
-      "id": "photo_04",
-      "evenementId": "evt_dakar_gala_2026",
-      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
-      "priseLe": "2026-11-15T20:45:00Z",
-      "url": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80",
-      "statut": "indexée",
-      "visagesDetectes": 1
-    },
-    {
-      "id": "photo_05",
-      "evenementId": "evt_dakar_gala_2026",
-      "photographeNom": "Aïcha Ndiaye",
-      "priseLe": "2026-11-15T21:10:00Z",
-      "url": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
-      "statut": "indexée",
-      "visagesDetectes": 1
     }
   ],
-  "visages": [
-    {
-      "id": "face_01",
-      "faceIdMoteur": "mock_face_id_01",
-      "photoId": "photo_01",
-      "evenementId": "evt_dakar_gala_2026",
-      "cadre": {
-        "top": 0.2,
-        "left": 0.3,
-        "width": 0.4,
-        "height": 0.4
-      },
-      "confidence": 99.8
-    },
-    {
-      "id": "face_02",
-      "faceIdMoteur": "mock_face_id_02",
-      "photoId": "photo_02",
-      "evenementId": "evt_dakar_gala_2026",
-      "cadre": {
-        "top": 0.15,
-        "left": 0.35,
-        "width": 0.38,
-        "height": 0.45
-      },
-      "confidence": 99.4
-    }
-  ],
+  "visages": [],
   "contacts": [
     {
       "id": "cnt_demo_01",
@@ -193,6 +121,13 @@
       "whatsappE164": "+221777777777",
       "majeur": true,
       "creeLe": "2026-11-04T15:56:53Z"
+    },
+    {
+      "id": "cnt_1793817121_593",
+      "nom": "Awa Ndiaye",
+      "whatsappE164": "+221781112233",
+      "majeur": true,
+      "creeLe": "2026-11-04T18:32:01Z"
     }
   ],
   "participations": [
@@ -265,6 +200,34 @@
       "evenementId": "evt_dakar_gala_2026",
       "jetonGalerie": "pl_115093_5585",
       "reconnuLe": "2026-11-04T18:06:25Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793816023_766",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_565517_6023",
+      "reconnuLe": "2026-11-04T18:13:43Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793816302_334",
+      "contactId": "cnt_1793807813_664",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_656967_6302",
+      "reconnuLe": "2026-11-04T18:18:22Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793817121_545",
+      "contactId": "cnt_1793817121_593",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_242118_7121",
+      "nom": "Awa Ndiaye",
+      "reconnuLe": "2026-11-04T18:32:01Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
     }
@@ -413,111 +376,69 @@
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T18:06:25Z",
       "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793816023_1",
+      "participationId": "part_1793816023_766",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:13:43Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793816023_2",
+      "participationId": "part_1793816023_766",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:13:43Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793816302_1",
+      "participationId": "part_1793816302_334",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:18:22Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793816302_2",
+      "participationId": "part_1793816302_334",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:18:22Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793817121_1",
+      "participationId": "part_1793817121_545",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:32:01Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793817121_2",
+      "participationId": "part_1793817121_545",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T18:32:01Z",
+      "borneId": "borne_ipad_01"
     }
   ],
   "liensPhotos": [
-    {
-      "id": "lnk_demo_01",
-      "participationId": "part_demo_01",
-      "photoId": "photo_01",
-      "similarite": 98.4,
-      "zone": "sure",
-      "statut": "retire_invite"
-    },
-    {
-      "id": "lnk_demo_02",
-      "participationId": "part_demo_01",
-      "photoId": "photo_03",
-      "similarite": 94.2,
-      "zone": "sure",
-      "statut": "retire_invite"
-    },
-    {
-      "id": "lnk_1793802153_811",
-      "participationId": "part_1793802152_457",
-      "photoId": "photo_02",
-      "similarite": 95.3,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793802153_180",
-      "participationId": "part_1793802152_457",
-      "photoId": "photo_05",
-      "similarite": 91.0,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793802153_374",
-      "participationId": "part_1793802152_457",
-      "photoId": "photo_04",
-      "similarite": 86.2,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793806091_908",
-      "participationId": "part_1793806091_947",
-      "photoId": "photo_04",
-      "similarite": 98.5,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793806091_974",
-      "participationId": "part_1793806091_947",
-      "photoId": "photo_02",
-      "similarite": 90.2,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793807813_839",
-      "participationId": "part_1793807813_230",
-      "photoId": "photo_02",
-      "similarite": 96.5,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793807813_288",
-      "participationId": "part_1793807813_230",
-      "photoId": "photo_04",
-      "similarite": 89.2,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793807813_488",
-      "participationId": "part_1793807813_230",
-      "photoId": "photo_03",
-      "similarite": 90.3,
-      "zone": "probable",
-      "statut": "actif"
-    },
     {
       "id": "lnk_1793814534_754",
       "participationId": "part_1793814534_743",
       "photoId": "photo_1793814422_62",
       "similarite": 98.7,
       "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793814534_733",
-      "participationId": "part_1793814534_743",
-      "photoId": "photo_01",
-      "similarite": 92.4,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793814534_257",
-      "participationId": "part_1793814534_743",
-      "photoId": "photo_05",
-      "similarite": 88.6,
-      "zone": "probable",
       "statut": "actif"
     },
     {
@@ -529,50 +450,10 @@
       "statut": "actif"
     },
     {
-      "id": "lnk_1793815072_121",
-      "participationId": "part_1793815072_709",
-      "photoId": "photo_01",
-      "similarite": 89.1,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
       "id": "lnk_1793815072_556",
       "participationId": "part_1793815072_709",
       "photoId": "photo_1793814422_42",
       "similarite": 91.3,
-      "zone": "probable",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793815289_179",
-      "participationId": "part_1793815289_866",
-      "photoId": "photo_01",
-      "similarite": 94.7,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793815289_910",
-      "participationId": "part_1793815289_866",
-      "photoId": "photo_02",
-      "similarite": 92.9,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793815585_720",
-      "participationId": "part_1793815585_293",
-      "photoId": "photo_04",
-      "similarite": 95.7,
-      "zone": "sure",
-      "statut": "actif"
-    },
-    {
-      "id": "lnk_1793815585_575",
-      "participationId": "part_1793815585_293",
-      "photoId": "photo_05",
-      "similarite": 90.3,
       "zone": "probable",
       "statut": "actif"
     },
@@ -582,6 +463,118 @@
       "photoId": "photo_1793814422_63",
       "similarite": 88.5,
       "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793816023_250",
+      "participationId": "part_1793816023_766",
+      "photoId": "photo_1793814421_28",
+      "similarite": 90.5,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793816302_946",
+      "participationId": "part_1793816302_334",
+      "photoId": "photo_1793814422_93",
+      "similarite": 88.6,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_demo_01_0",
+      "participationId": "part_demo_01",
+      "photoId": "photo_1793814422_42",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_demo_01_1",
+      "participationId": "part_demo_01",
+      "photoId": "photo_1793814421_28",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793802152_457_0",
+      "participationId": "part_1793802152_457",
+      "photoId": "photo_1793814420_68",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793802152_457_1",
+      "participationId": "part_1793802152_457",
+      "photoId": "photo_1793814422_93",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793806091_947_0",
+      "participationId": "part_1793806091_947",
+      "photoId": "photo_1793814421_58",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793806091_947_1",
+      "participationId": "part_1793806091_947",
+      "photoId": "photo_1793814422_42",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793807813_230_0",
+      "participationId": "part_1793807813_230",
+      "photoId": "photo_1793814420_68",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793807813_230_1",
+      "participationId": "part_1793807813_230",
+      "photoId": "photo_1793814422_63",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793815289_866_0",
+      "participationId": "part_1793815289_866",
+      "photoId": "photo_1793814420_68",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_part_1793815289_866_1",
+      "participationId": "part_1793815289_866",
+      "photoId": "photo_1793814421_28",
+      "similarite": 89.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793817121_825",
+      "participationId": "part_1793817121_545",
+      "photoId": "photo_1793814422_82",
+      "similarite": 97.3,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793817121_555",
+      "participationId": "part_1793817121_545",
+      "photoId": "photo_1793814422_93",
+      "similarite": 92.9,
+      "zone": "sure",
       "statut": "actif"
     }
   ]

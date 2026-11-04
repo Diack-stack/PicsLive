@@ -19,7 +19,7 @@ export async function GET(
     return NextResponse.json({
       success: true,
       gallery: {
-        nom: data.contact?.nom || "Invité d'honneur",
+        nom: data.participation?.nom || data.contact?.nom || "Invité d'honneur",
         evenementNom: data.event?.nom || "Événement",
         date: data.event?.date,
         lieu: data.event?.lieu,
