@@ -43,7 +43,7 @@ export interface FaceEngine {
   searchFacesBySelfie(
     collectionId: string,
     selfieBase64OrUrl: string,
-    thresholds?: { sure: number; probable: number }
+    thresholds?: { sure?: number; sur?: number; probable: number }
   ): Promise<SearchResult>;
 
   /**

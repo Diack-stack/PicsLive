@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { dbService } from "@/lib/db";
 import { getFaceEngine } from "@/lib/engine";
 import { formatWhatsAppToE164 } from "@/lib/utils";
+import QRCode from "qrcode";
 
 export async function POST(request: Request) {
   try {
@@ -74,10 +75,14 @@ export async function POST(request: Request) {
     dbService.recordConsents(participation.id, consentsToRecord);
 
     // 4. Recherche faciale par le moteur (AWS Rekognition ou Simulateur)
+    const thresholds = {
+      sure: event.seuils.sure ?? event.seuils.sur ?? 92,
+      probable: event.seuils.probable ?? 82,
+    };
     const searchResult = await engine.searchFacesBySelfie(
       event.collectionMoteur,
       selfieBase64 || "",
-      event.seuils
+      thresholds
     );
 
     // 5. Association des photos trouvées à la participation
@@ -98,10 +103,22 @@ export async function POST(request: Request) {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
     const galleryUrl = `${appUrl}/galerie/${jetonGalerie}`;
 
+    let qrCode: string | undefined;
+    try {
+      qrCode = await QRCode.toDataURL(galleryUrl, {
+        width: 280,
+        margin: 1,
+        color: { dark: "#070D18", light: "#FFFFFF" },
+      });
+    } catch {
+      // Fallback si canvas non disponible
+    }
+
     return NextResponse.json({
       success: true,
       jetonGalerie,
       galleryUrl,
+      qrCode,
       matchedSureCount: sureMatches.length,
       matchedProbableCount: probableMatches.length,
       totalCount: searchResult.matches.length,

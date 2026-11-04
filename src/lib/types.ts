@@ -13,7 +13,8 @@ export interface EventData {
   optionPartageOrganisateur: boolean;
   langues: string[];
   seuils: {
-    sur: number;
+    sur?: number;
+    sure?: number;
     probable: number;
   };
   clientNom: string;

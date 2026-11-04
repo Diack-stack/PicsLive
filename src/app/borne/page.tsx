@@ -34,7 +34,7 @@ export default function BornePage() {
   }, [step]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (step === "result") {
       setAutoResetTimer(60);
       interval = setInterval(() => {
@@ -110,11 +110,18 @@ export default function BornePage() {
       const data = await res.json();
       if (data.success) {
         setRecognitionResult(data);
-        const qrUrl = await QRCode.toDataURL(data.galleryUrl, {
-          width: 260,
-          margin: 1,
-          color: { dark: "#070D18", light: "#FFFFFF" },
-        });
+        let qrUrl = data.qrCode;
+        if (!qrUrl) {
+          try {
+            qrUrl = await QRCode.toDataURL(data.galleryUrl, {
+              width: 260,
+              margin: 1,
+              color: { dark: "#070D18", light: "#FFFFFF" },
+            });
+          } catch {
+            qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=070D18&bgcolor=FFFFFF&margin=10&data=${encodeURIComponent(data.galleryUrl)}`;
+          }
+        }
         setQrCodeDataUrl(qrUrl);
         setStep("result");
       } else {

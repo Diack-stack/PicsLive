@@ -23,6 +23,7 @@ const INITIAL_DB: DatabaseSchema = {
       langues: ["fr", "en"],
       seuils: {
         sur: 92,
+        sure: 92,
         probable: 82,
       },
       clientNom: "CreatifPics Events",
@@ -30,47 +31,74 @@ const INITIAL_DB: DatabaseSchema = {
   ],
   photos: [
     {
-      id: "photo_01",
+      id: "photo_1793814422_93",
       evenementId: "evt_dakar_gala_2026",
-      photographeNom: "Mamadou Diallo (R6 Mark II)",
-      priseLe: "2026-11-15T20:15:00Z",
-      url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:02Z",
+      url: "/uploads/photo_1793814422_105.jpg",
       statut: "indexée",
       visagesDetectes: 1,
     },
     {
-      id: "photo_02",
+      id: "photo_1793814422_42",
       evenementId: "evt_dakar_gala_2026",
-      photographeNom: "Mamadou Diallo (R6 Mark II)",
-      priseLe: "2026-11-15T20:22:00Z",
-      url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:02Z",
+      url: "/uploads/photo_1793814422_636.jpg",
+      statut: "indexée",
+      visagesDetectes: 3,
+    },
+    {
+      id: "photo_1793814422_62",
+      evenementId: "evt_dakar_gala_2026",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:02Z",
+      url: "/uploads/photo_1793814422_715.jpg",
       statut: "indexée",
       visagesDetectes: 1,
     },
     {
-      id: "photo_03",
+      id: "photo_1793814422_63",
       evenementId: "evt_dakar_gala_2026",
-      photographeNom: "Aïcha Ndiaye",
-      priseLe: "2026-11-15T20:30:00Z",
-      url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:02Z",
+      url: "/uploads/photo_1793814422_135.jpg",
+      statut: "indexée",
+      visagesDetectes: 3,
+    },
+    {
+      id: "photo_1793814422_82",
+      evenementId: "evt_dakar_gala_2026",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:02Z",
+      url: "/uploads/photo_1793814421_101.JPG",
+      statut: "indexée",
+      visagesDetectes: 2,
+    },
+    {
+      id: "photo_1793814421_28",
+      evenementId: "evt_dakar_gala_2026",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:01Z",
+      url: "/uploads/photo_1793814421_653.JPG",
+      statut: "indexée",
+      visagesDetectes: 2,
+    },
+    {
+      id: "photo_1793814421_58",
+      evenementId: "evt_dakar_gala_2026",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:01Z",
+      url: "/uploads/photo_1793814420_156.JPG",
       statut: "indexée",
       visagesDetectes: 1,
     },
     {
-      id: "photo_04",
+      id: "photo_1793814420_68",
       evenementId: "evt_dakar_gala_2026",
-      photographeNom: "Mamadou Diallo (R6 Mark II)",
-      priseLe: "2026-11-15T20:45:00Z",
-      url: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80",
-      statut: "indexée",
-      visagesDetectes: 1,
-    },
-    {
-      id: "photo_05",
-      evenementId: "evt_dakar_gala_2026",
-      photographeNom: "Aïcha Ndiaye",
-      priseLe: "2026-11-15T21:10:00Z",
-      url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+      photographeNom: "Canon R6 Mark II (SFTP)",
+      priseLe: "2026-11-04T17:47:00Z",
+      url: "/uploads/photo_1793814420_594.JPG",
       statut: "indexée",
       visagesDetectes: 1,
     },
@@ -108,11 +136,15 @@ const INITIAL_DB: DatabaseSchema = {
 };
 
 function ensureDbFile(): void {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(DB_PATH)) {
-    fs.writeFileSync(DB_PATH, JSON.stringify(INITIAL_DB, null, 2), "utf-8");
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(DB_PATH)) {
+      fs.writeFileSync(DB_PATH, JSON.stringify(INITIAL_DB, null, 2), "utf-8");
+    }
+  } catch (_err) {
+    // Environnement serverless en lecture seule (Vercel)
   }
 }
 
