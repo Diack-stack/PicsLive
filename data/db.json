@@ -1,0 +1,262 @@
+{
+  "events": [
+    {
+      "id": "evt_dakar_gala_2026",
+      "nom": "Gala d'Excellence CreatifPics Dakar",
+      "type": "Gala & Soirée Privée",
+      "lieu": "King Fahd Palace, Dakar",
+      "date": "2026-11-15",
+      "statut": "en_cours",
+      "codeUnique": "GALA-2026",
+      "collectionMoteur": "picslive_gala_2026",
+      "banniereUrl": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+      "fenetreJours": 7,
+      "modeJeunesse": false,
+      "optionPartageOrganisateur": true,
+      "langues": [
+        "fr",
+        "en"
+      ],
+      "seuils": {
+        "sur": 92,
+        "probable": 82
+      },
+      "clientNom": "CreatifPics Events"
+    }
+  ],
+  "photos": [
+    {
+      "id": "photo_01",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
+      "priseLe": "2026-11-15T20:15:00Z",
+      "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_02",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
+      "priseLe": "2026-11-15T20:22:00Z",
+      "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_03",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Aïcha Ndiaye",
+      "priseLe": "2026-11-15T20:30:00Z",
+      "url": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_04",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Mamadou Diallo (Canon R6 Mark II)",
+      "priseLe": "2026-11-15T20:45:00Z",
+      "url": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    },
+    {
+      "id": "photo_05",
+      "evenementId": "evt_dakar_gala_2026",
+      "photographeNom": "Aïcha Ndiaye",
+      "priseLe": "2026-11-15T21:10:00Z",
+      "url": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+      "statut": "indexée",
+      "visagesDetectes": 1
+    }
+  ],
+  "visages": [
+    {
+      "id": "face_01",
+      "faceIdMoteur": "mock_face_id_01",
+      "photoId": "photo_01",
+      "evenementId": "evt_dakar_gala_2026",
+      "cadre": {
+        "top": 0.2,
+        "left": 0.3,
+        "width": 0.4,
+        "height": 0.4
+      },
+      "confidence": 99.8
+    },
+    {
+      "id": "face_02",
+      "faceIdMoteur": "mock_face_id_02",
+      "photoId": "photo_02",
+      "evenementId": "evt_dakar_gala_2026",
+      "cadre": {
+        "top": 0.15,
+        "left": 0.35,
+        "width": 0.38,
+        "height": 0.45
+      },
+      "confidence": 99.4
+    }
+  ],
+  "contacts": [
+    {
+      "id": "cnt_demo_01",
+      "nom": "Mariama Ba",
+      "whatsappE164": "+221775554433",
+      "email": "mariama.ba@creatifpics.sn",
+      "majeur": true,
+      "creeLe": "2026-11-15T20:30:00Z"
+    },
+    {
+      "id": "cnt_1793802152_526",
+      "nom": "Lamine Diack",
+      "whatsappE164": "+221764175484",
+      "majeur": true,
+      "creeLe": "2026-11-04T14:22:32Z"
+    }
+  ],
+  "participations": [
+    {
+      "id": "part_demo_01",
+      "contactId": "cnt_demo_01",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_demo_token_8a9b7c",
+      "reconnuLe": "2026-11-15T20:32:00Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "consultee"
+    },
+    {
+      "id": "part_1793802152_457",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_605336_2152",
+      "reconnuLe": "2026-11-04T14:22:32Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793806091_947",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_444366_6091",
+      "reconnuLe": "2026-11-04T15:28:11Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    }
+  ],
+  "consentements": [
+    {
+      "id": "cst_demo_01",
+      "participationId": "part_demo_01",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-15T20:32:00Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_demo_02",
+      "participationId": "part_demo_01",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-15T20:32:00Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793802152_1",
+      "participationId": "part_1793802152_457",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T14:22:32Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793802152_2",
+      "participationId": "part_1793802152_457",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T14:22:32Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793806091_1",
+      "participationId": "part_1793806091_947",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T15:28:11Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793806091_2",
+      "participationId": "part_1793806091_947",
+      "type": "marketing",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T15:28:11Z",
+      "borneId": "borne_ipad_01"
+    }
+  ],
+  "liensPhotos": [
+    {
+      "id": "lnk_demo_01",
+      "participationId": "part_demo_01",
+      "photoId": "photo_01",
+      "similarite": 98.4,
+      "zone": "sure",
+      "statut": "retire_invite"
+    },
+    {
+      "id": "lnk_demo_02",
+      "participationId": "part_demo_01",
+      "photoId": "photo_03",
+      "similarite": 94.2,
+      "zone": "sure",
+      "statut": "retire_invite"
+    },
+    {
+      "id": "lnk_1793802153_811",
+      "participationId": "part_1793802152_457",
+      "photoId": "photo_02",
+      "similarite": 95.3,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793802153_180",
+      "participationId": "part_1793802152_457",
+      "photoId": "photo_05",
+      "similarite": 91.0,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793802153_374",
+      "participationId": "part_1793802152_457",
+      "photoId": "photo_04",
+      "similarite": 86.2,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793806091_908",
+      "participationId": "part_1793806091_947",
+      "photoId": "photo_04",
+      "similarite": 98.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793806091_974",
+      "participationId": "part_1793806091_947",
+      "photoId": "photo_02",
+      "similarite": 90.2,
+      "zone": "probable",
+      "statut": "actif"
+    }
+  ]
+}
