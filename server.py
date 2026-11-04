@@ -188,7 +188,7 @@ HTML_HUB = """<!DOCTYPE html>
 
   <!-- NAVIGATION HEADER -->
   <header class="max-w-6xl mx-auto w-full px-6 py-6 flex items-center justify-between z-20">
-    <div class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3 hover:opacity-90 transition">
       <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#182747] to-[#0C1427] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] shadow-lg">
         <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
@@ -199,7 +199,7 @@ HTML_HUB = """<!DOCTYPE html>
         <span class="text-lg font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
         <span class="block text-[10px] text-slate-400 font-semibold tracking-widest uppercase">by CreatifPics</span>
       </div>
-    </div>
+    </a>
 
     <div class="flex items-center gap-3">
       <div class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111C35]/80 border border-[#D4AF37]/20 shadow-sm text-xs font-semibold text-slate-300">
@@ -242,28 +242,31 @@ HTML_HUB = """<!DOCTYPE html>
 
     <!-- COMPOSITION EN ÉVENTAIL 3D -->
     <div class="relative w-full max-w-3xl h-64 sm:h-76 flex items-center justify-center mb-16 photo-stack">
+      <!-- Carte Arrière Gauche : Superviseur -->
       <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <img src="/uploads/photo_1793814422_105.jpg" alt="Superviseur" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
-        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Gala Dakar 2026</span>
+        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Superviseur</span>
       </div>
 
+      <!-- Carte Arrière Droite : Jack Gala -->
       <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <img src="/uploads/photo_1793814420_156.JPG" alt="Gala CreatifPics" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
-        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Soirée Privée</span>
+        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Gala CreatifPics</span>
       </div>
 
+      <!-- Carte Centrale En Vedette : Jack (Costume, lunettes, chemise blanche) -->
       <div class="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-[#D4AF37]/50 transform hover:scale-105 transition-all duration-300 z-10">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <img src="/uploads/photo_1793814421_653.JPG" alt="Jack" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/90 via-transparent to-transparent"></div>
         <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-[#070D18]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-extrabold text-[#D4AF37] shadow-sm flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-          Reconnu 98.4%
+          Reconnu 98.8%
         </div>
         <div class="absolute bottom-4 left-4 text-left">
-          <span class="text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">Mariama Ba</span>
-          <p class="text-xs font-semibold text-white">2 photos livrées en direct</p>
+          <span class="text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">Jack</span>
+          <p class="text-xs font-semibold text-white">4 photos livrées en direct</p>
         </div>
       </div>
     </div>
@@ -362,7 +365,7 @@ HTML_BORNE = """<!DOCTYPE html>
   <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-[#1E3A8A]/25 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
   <header class="max-w-4xl mx-auto w-full px-6 py-5 flex items-center justify-between z-20">
-    <div class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3 hover:opacity-90 transition">
       <div class="w-10 h-10 rounded-2xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] shadow-lg">
         <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
@@ -373,7 +376,7 @@ HTML_BORNE = """<!DOCTYPE html>
         <span class="text-base font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
         <span class="block text-[10px] text-slate-400 font-semibold tracking-wider uppercase">CreatifPics Dakar</span>
       </div>
-    </div>
+    </a>
     <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111C35]/90 border border-[#D4AF37]/25 shadow-sm text-xs font-semibold text-slate-300">
       <span class="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
       <span id="stepIndicator">Étape 1 sur 3</span>
@@ -700,12 +703,12 @@ HTML_GALERIE = """<!DOCTYPE html>
 
   <header class="sticky top-0 z-40 bg-[#070D18]/85 backdrop-blur-md border-b border-white/5 px-5 py-4">
     <div class="max-w-2xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
+      <a href="/" class="flex items-center gap-2.5 hover:opacity-90 transition">
         <div class="w-8 h-8 rounded-xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]">
           <svg class="w-4 h-4 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
         </div>
         <span class="text-sm font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
-      </div>
+      </a>
 
       <button onclick="shareWhatsApp()" class="px-4 py-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition active:scale-95">
         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.06-2.146-.541-1.859-.77-3.045-2.664-3.138-2.787-.092-.122-.751-.998-.751-1.905 0-.907.476-1.352.645-1.536.17-.184.37-.23.493-.23.123 0 .247.002.354.007.112.006.262-.042.41.314.154.37.524 1.277.57 1.37.046.092.077.2.015.323-.062.123-.092.2-.185.307-.092.108-.195.242-.278.325-.093.093-.19.195-.082.38.108.185.479.79 1.028 1.279.707.63 1.303.825 1.488.918.185.092.293.077.4-.046.108-.123.462-.538.585-.723.123-.185.246-.154.415-.092.17.061 1.077.508 1.262.6.185.092.308.138.354.215.046.077.046.446-.098.851z"/></svg>
@@ -858,7 +861,7 @@ HTML_ADMIN = """<!DOCTYPE html>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-[#D4AF37] selection:text-[#070D18]">
   <header class="border-b border-white/5 bg-[#070D18]/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
+      <a href="/" class="flex items-center gap-3 hover:opacity-90 transition">
         <div class="w-9 h-9 rounded-xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]">
           <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
         </div>
@@ -866,7 +869,7 @@ HTML_ADMIN = """<!DOCTYPE html>
           <span class="text-base font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
           <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#111C35] text-[#D4AF37] border border-[#D4AF37]/30 uppercase">Régie Studio</span>
         </div>
-      </div>
+      </a>
       <a href="/borne" target="_blank" class="px-4 py-2 rounded-full bg-[#111C35] hover:bg-[#182747] text-[#D4AF37] border border-[#D4AF37]/30 text-xs font-bold transition">
         Ouvrir la Borne Kiosk &rarr;
       </a>

@@ -90,8 +90,8 @@ export default function AdminPage() {
     <div className="min-h-screen bg-night text-chalk flex flex-col justify-between antialiased selection:bg-gold selection:text-night">
       <header className="border-b border-white/5 bg-night/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-surface border border-gold/30 flex items-center justify-center text-gold">
+          <Link href="/" className="flex items-center gap-3 group hover:opacity-90 transition">
+            <div className="w-9 h-9 rounded-xl bg-surface border border-gold/30 flex items-center justify-center text-gold group-hover:border-gold/60 transition">
               <Camera className="w-5 h-5 text-gold" strokeWidth={2.2} />
             </div>
             <div>
@@ -102,7 +102,7 @@ export default function AdminPage() {
                 Régie Studio
               </span>
             </div>
-          </div>
+          </Link>
           <Link
             href="/borne"
             target="_blank"

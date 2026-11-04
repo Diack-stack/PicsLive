@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import QRCode from "qrcode";
 import { Camera, Check, ArrowRight, ChevronLeft, ShieldCheck } from "lucide-react";
 
@@ -156,8 +157,8 @@ export default function BornePage() {
 
       {/* HEADER */}
       <header className="max-w-4xl mx-auto w-full px-6 py-5 flex items-center justify-between z-20">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-surface border border-gold/30 flex items-center justify-center text-gold shadow-lg">
+        <Link href="/" className="flex items-center gap-3 group hover:opacity-90 transition">
+          <div className="w-10 h-10 rounded-2xl bg-surface border border-gold/30 flex items-center justify-center text-gold shadow-lg group-hover:border-gold/60 transition">
             <Camera className="w-5 h-5 text-gold" strokeWidth={2.2} />
           </div>
           <div>
@@ -168,7 +169,7 @@ export default function BornePage() {
               CreatifPics Dakar
             </span>
           </div>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/90 border border-gold/25 shadow-sm text-xs font-semibold text-slate-300">
           <span className="w-2 h-2 rounded-full bg-gold" />

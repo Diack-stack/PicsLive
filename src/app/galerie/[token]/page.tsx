@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Download, Camera, EyeOff, Share2 } from "lucide-react";
 
@@ -59,14 +60,14 @@ export default function GaleriePage() {
       {/* HEADER */}
       <header className="sticky top-0 z-40 bg-night/85 backdrop-blur-md border-b border-white/5 px-5 py-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-surface border border-gold/30 flex items-center justify-center text-gold">
+          <Link href="/" className="flex items-center gap-2.5 group hover:opacity-90 transition">
+            <div className="w-8 h-8 rounded-xl bg-surface border border-gold/30 flex items-center justify-center text-gold group-hover:border-gold/60 transition">
               <Camera className="w-4 h-4 text-gold" strokeWidth={2.2} />
             </div>
             <span className="text-sm font-extrabold tracking-tight text-white">
               Pics<span className="text-gold">Live</span>
             </span>
-          </div>
+          </Link>
 
           <button
             onClick={shareWhatsApp}

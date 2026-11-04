@@ -12,8 +12,8 @@ export default function HomePage() {
 
       {/* NAVIGATION HEADER */}
       <header className="max-w-6xl mx-auto w-full px-6 py-6 flex items-center justify-between z-20">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-surfaceLight to-abyss border border-gold/30 flex items-center justify-center text-gold shadow-lg">
+        <Link href="/" className="flex items-center gap-3 group hover:opacity-90 transition">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-surfaceLight to-abyss border border-gold/30 flex items-center justify-center text-gold shadow-lg group-hover:border-gold/60 transition">
             <Camera className="w-5 h-5 text-gold" strokeWidth={2.2} />
           </div>
           <div>
@@ -24,7 +24,7 @@ export default function HomePage() {
               by CreatifPics
             </span>
           </div>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface/80 border border-gold/20 shadow-sm text-xs font-semibold text-slate-300">
@@ -82,47 +82,47 @@ export default function HomePage() {
 
         {/* COMPOSITION EN ÉVENTAIL 3D (PHOTOSTACK) */}
         <div className="relative w-full max-w-3xl h-64 sm:h-76 flex items-center justify-center mb-16">
-          {/* Carte Arrière Gauche */}
+          {/* Carte Arrière Gauche : Superviseur */}
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
-              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80"
-              alt="Gala Dakar"
+              src="/uploads/photo_1793814422_105.jpg"
+              alt="Superviseur"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
             <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Gala Dakar 2026
+              Superviseur
             </span>
           </div>
 
-          {/* Carte Arrière Droite */}
+          {/* Carte Arrière Droite : Jack Photoshoot */}
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
-              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
-              alt="Soirée Privée"
+              src="/uploads/photo_1793814420_156.JPG"
+              alt="Gala CreatifPics"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
             <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Soirée Privée
+              Gala CreatifPics
             </span>
           </div>
 
-          {/* Carte Centrale En Vedette */}
+          {/* Carte Centrale En Vedette : Jack (Costume, lunettes, chemise blanche) */}
           <div className="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-gold/50 transform hover:scale-105 transition-all duration-300 z-10">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
-              alt="Mariama Ba"
+              src="/uploads/photo_1793814421_653.JPG"
+              alt="Jack"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent" />
             <div className="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-night/85 backdrop-blur-md border border-gold/40 text-[10px] font-extrabold text-gold shadow-sm flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Reconnu 98.4%
+              Reconnu 98.8%
             </div>
             <div className="absolute bottom-4 left-4 text-left">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-gold">Mariama Ba</span>
-              <p className="text-xs font-semibold text-white">2 photos livrées en direct</p>
+              <span className="text-[10px] uppercase font-bold tracking-wider text-gold">Jack</span>
+              <p className="text-xs font-semibold text-white">4 photos livrées en direct</p>
             </div>
           </div>
         </div>
