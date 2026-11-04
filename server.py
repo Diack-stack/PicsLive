@@ -1,10 +1,12 @@
 """
-PicsLive - Serveur de Développement MVP
-Design System Haute Couture inspiré des références :
-- Fond porcelaine chaud & auras dégradées (Readly, Travexa)
-- Cartes superposées en éventail 3D (Travelwise, Collections)
-- Barre flottante en verre dépoli (iOS Liquid Glass)
-- Typographie géométrique & zéro emoji (uniquement icônes vectorielles SVG épurées)
+PicsLive - Serveur MVP Haute Couture
+Direction Artistique : ADN Bleu Nuit Profond & Or (Cahier des charges)
+avec le niveau d'exécution, micro-détails et fluidité des références Dribbble :
+- Surfaces en verre sombre dépoli (Dark Glassmorphism, bordures fines dorées 1px)
+- Cartes photos en éventail 3D (Photostack) avec badges flottants
+- Boutons pilules or brossé satiné avec biseau intérieur
+- Barre d'action flottante (Floating Liquid Pill)
+- Zéro emoji, icônes vectorielles ultra-fines (1.75px)
 """
 
 import sys
@@ -41,21 +43,22 @@ def format_whatsapp(phone, default_country="221"):
     return f"+{default_country}{cleaned}"
 
 # ==============================================================================
-# TEMPLATES HTML AVEC DESIGN SYSTEM PREMIUM (ZÉRO EMOJI, ICÔNES SVG ÉPURÉES)
+# PAGES HTML - BLEU NUIT OBSIDIENNE & OR PRESTIGE (FINITION DRIBBBLE)
 # ==============================================================================
 
 HTML_HUB = """<!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PicsLive · Reconnaissance Faciale Événementielle</title>
+  <title>PicsLive · by CreatifPics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -63,164 +66,193 @@ HTML_HUB = """<!DOCTYPE html>
             serif: ['"Playfair Display"', 'serif'],
           },
           colors: {
-            canvas: '#F8F9FA',
-            dark: '#090D16',
-            amberAccent: '#F59E0B',
-            honey: '#EAB308',
-            cream: '#FFFDF9',
+            night: '#070D18',
+            abyss: '#0C1427',
+            surface: '#111C35',
+            surfaceLight: '#182747',
+            gold: '#D4AF37',
+            goldMuted: '#C08A3E',
+            goldAmber: '#F59E0B',
+            chalk: '#F8FAFC',
           }
         }
       }
     }
   </script>
   <style>
-    body { background-color: #F8F9FA; color: #090D16; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.03);
+    body { background-color: #070D18; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Dark Luxury Glassmorphism */
+    .luxury-card {
+      background: rgba(17, 28, 53, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.08);
     }
-    .photo-stack {
-      perspective: 1000px;
+    .luxury-card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pill-shadow {
-      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.35);
+    .luxury-card-hover:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 25px 60px -15px rgba(212, 175, 55, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     }
+
+    /* Bouton Or Satiné avec biseau de lumière */
+    .btn-gold {
+      background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #B8860B 100%);
+      color: #070D18;
+      box-shadow: 0 12px 28px -6px rgba(212, 175, 55, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px -6px rgba(212, 175, 55, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    }
+    .btn-gold:active {
+      transform: scale(0.98);
+    }
+
+    .photo-stack { perspective: 1200px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden antialiased">
-  <!-- Auras atmosphériques douces inspirées de Travexa & Readly -->
-  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-amber-100/50 via-sky-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="absolute top-96 -right-20 w-80 h-80 bg-purple-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden antialiased selection:bg-[#D4AF37] selection:text-[#070D18]">
+  
+  <!-- Auras atmosphériques or & bleu saphir sombre -->
+  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-[#D4AF37]/15 via-[#1E3A8A]/15 to-transparent rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="absolute top-96 -right-20 w-80 h-80 bg-[#D4AF37]/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+  <div class="absolute bottom-20 -left-20 w-80 h-80 bg-[#1E3A8A]/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
   <!-- NAVIGATION HEADER -->
   <header class="max-w-6xl mx-auto w-full px-6 py-6 flex items-center justify-between z-20">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-2xl bg-[#090D16] flex items-center justify-center text-white shadow-md">
-        <svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#182747] to-[#0C1427] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] shadow-lg">
+        <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path>
         </svg>
       </div>
       <div>
-        <span class="text-lg font-extrabold tracking-tight text-[#090D16]">Pics<span class="text-amber-500">Live</span></span>
-        <span class="block text-[10px] text-slate-400 font-medium tracking-widest uppercase">by CreatifPics</span>
+        <span class="text-lg font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
+        <span class="block text-[10px] text-slate-400 font-semibold tracking-widest uppercase">by CreatifPics</span>
       </div>
     </div>
 
     <div class="flex items-center gap-3">
-      <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-slate-200/60 shadow-sm text-xs font-semibold text-slate-600">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <div class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111C35]/80 border border-[#D4AF37]/20 shadow-sm text-xs font-semibold text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
         <span>Version 2.1 Studio</span>
       </div>
-      <a href="/admin" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm">
+      <a href="/admin" class="px-4 py-2 rounded-full bg-[#111C35] hover:bg-[#182747] border border-[#D4AF37]/30 text-xs font-semibold text-[#D4AF37] transition shadow-sm">
         Régie Opérateur
       </a>
     </div>
   </header>
 
-  <!-- HERO SECTION INSPIRÉE DE TRAVELWISE & READLY -->
+  <!-- HERO SECTION INSPIRÉE DE TRAVELWISE & READLY (VERSION BLEU NUIT & OR) -->
   <main class="max-w-6xl mx-auto px-6 pt-6 pb-16 flex-1 flex flex-col items-center justify-center text-center z-10 w-full">
-    <!-- TAG PILULE -->
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm text-slate-700 text-xs font-semibold mb-6">
-      <span class="px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold uppercase tracking-wider">Live</span>
+    
+    <!-- BADGE PILULE EN VERRE SOMBRE -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#111C35]/90 border border-[#D4AF37]/25 shadow-sm text-slate-300 text-xs font-semibold mb-6">
+      <span class="px-2 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold uppercase tracking-wider">Live</span>
       Reconnaissance faciale instantanée pour événements
     </div>
 
-    <!-- GRAND TITRE ÉDITORIAL -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#090D16] max-w-4xl leading-[1.08] mb-6">
+    <!-- TITRE ÉDITORIAL AVEC TOUCHES SERIF ITALIQUES -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.08] mb-6">
       Vos photos d'événement,<br>
-      retrouvées en <span class="font-serif italic font-semibold text-amber-500">un regard.</span>
+      retrouvées en <span class="font-serif italic font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#F5D77F] via-[#D4AF37] to-[#C08A3E]">un regard.</span>
     </h1>
 
-    <p class="text-base sm:text-lg text-slate-500 max-w-xl mb-10 leading-relaxed font-normal">
-      Une borne tactile élégante, un selfie instantané et vos clichés haute résolution sont livrés sur votre smartphone en quelques secondes.
+    <p class="text-base sm:text-lg text-slate-400 max-w-xl mb-10 leading-relaxed font-normal">
+      Une borne tactile raffinée, un selfie instantané et vos clichés haute résolution sont livrés sur votre smartphone en direct.
     </p>
 
-    <!-- BOUTONS D'ACTION PRINCIPAUX (STYLE READLY & TRAVEXA) -->
-    <div class="flex flex-col sm:flex-row items-center gap-3 mb-14 w-full sm:w-auto">
-      <a href="/borne" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2.5 transition-all pill-shadow transform hover:-translate-y-0.5">
+    <!-- BOUTONS D'ACTION (PILULE OR SATINÉ + PILULE VERRE SOMBRE) -->
+    <div class="flex flex-col sm:flex-row items-center gap-3.5 mb-16 w-full sm:w-auto">
+      <a href="/borne" class="btn-gold w-full sm:w-auto px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center justify-center gap-2.5">
         <span>Lancer la Borne Invité</span>
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-4 h-4 text-[#070D18]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </a>
-      <a href="/galerie/pl_demo_token_8a9b7c" class="w-full sm:w-auto px-7 py-4 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold text-sm tracking-wide flex items-center justify-center gap-2 shadow-sm transition">
+      <a href="/galerie/pl_demo_token_8a9b7c" class="w-full sm:w-auto px-7 py-4 rounded-full bg-[#111C35]/80 hover:bg-[#182747] text-slate-200 border border-[#D4AF37]/25 font-semibold text-sm tracking-wide flex items-center justify-center gap-2 transition">
         <span>Voir la Galerie Démo</span>
       </a>
     </div>
 
-    <!-- COMPOSITION DE CARTES EN ÉVENTAIL 3D (RÉFÉRENCE PHOTOSTACK) -->
-    <div class="relative w-full max-w-3xl h-64 sm:h-72 flex items-center justify-center mb-16 photo-stack">
+    <!-- COMPOSITION EN ÉVENTAIL 3D (DARK LUXURY PHOTOSTACK) -->
+    <div class="relative w-full max-w-3xl h-64 sm:h-76 flex items-center justify-center mb-16 photo-stack">
       <!-- Carte Arrière Gauche -->
-      <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-white transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-2 transition-transform duration-500 hover:-translate-y-2">
+      <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
         <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
         <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Gala Dakar 2026</span>
       </div>
 
       <!-- Carte Arrière Droite -->
-      <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-xl border-4 border-white transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-2 transition-transform duration-500 hover:-translate-y-2">
+      <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
         <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
         <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Soirée Privée</span>
       </div>
 
-      <!-- Carte Centrale En Vedette -->
-      <div class="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-2xl border-4 border-white transform hover:scale-105 transition-all duration-300 z-10">
+      <!-- Carte Centrale En Vedette (Finitions Or & Glassmorphism) -->
+      <div class="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-[#D4AF37]/50 transform hover:scale-105 transition-all duration-300 z-10">
         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
-        <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-extrabold text-slate-800 shadow-sm flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/90 via-transparent to-transparent"></div>
+        <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-[#070D18]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-extrabold text-[#D4AF37] shadow-sm flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
           Reconnu 98.4%
         </div>
-        <div class="absolute bottom-3.5 left-4 text-left">
-          <span class="text-[10px] uppercase font-bold tracking-wider text-amber-300">Mariama Ba</span>
+        <div class="absolute bottom-4 left-4 text-left">
+          <span class="text-[10px] uppercase font-bold tracking-wider text-[#D4AF37]">Mariama Ba</span>
           <p class="text-xs font-semibold text-white">2 photos livrées en direct</p>
         </div>
       </div>
     </div>
 
-    <!-- BENTO GRID DE FONCTIONNALITÉS (STYLE TRAVEXA & READLY) -->
+    <!-- BENTO GRID (FINITION SOMBRE LUXUEUSE) -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full text-left max-w-5xl">
       <!-- Item 1 -->
-      <div class="glass-card p-7 rounded-[28px] transition-all hover:translate-y-[-2px]">
-        <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-amber-600 mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="luxury-card luxury-card-hover p-7 rounded-[28px]">
+        <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/25 flex items-center justify-center text-[#D4AF37] mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
             <circle cx="12" cy="13" r="3"></circle>
           </svg>
         </div>
-        <h3 class="text-base font-bold text-slate-900 mb-1.5">Borne Kiosk Tactile</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
+        <h3 class="text-base font-bold text-white mb-1.5">Borne Kiosk Tactile</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
           Viseur dynamique avec autofocus simulé. Moins de 30 secondes pour retrouver toutes ses photos.
         </p>
       </div>
 
       <!-- Item 2 -->
-      <div class="glass-card p-7 rounded-[28px] transition-all hover:translate-y-[-2px]">
-        <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200/60 flex items-center justify-center text-blue-600 mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="luxury-card luxury-card-hover p-7 rounded-[28px]">
+        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-400 mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
             <line x1="12" y1="18" x2="12.01" y2="18"></line>
           </svg>
         </div>
-        <h3 class="text-base font-bold text-slate-900 mb-1.5">Galerie Mobile Live</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
+        <h3 class="text-base font-bold text-white mb-1.5">Galerie Mobile Live</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
           Accès immédiat par QR Code personnel. Vos clichés s'ajoutent en temps réel pendant la réception.
         </p>
       </div>
 
       <!-- Item 3 -->
-      <div class="glass-card p-7 rounded-[28px] transition-all hover:translate-y-[-2px]">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600 mb-5">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="luxury-card luxury-card-hover p-7 rounded-[28px]">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 mb-5">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
         </div>
-        <h3 class="text-base font-bold text-slate-900 mb-1.5">Conformité & Confidentialité</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
+        <h3 class="text-base font-bold text-white mb-1.5">Conformité CDP & Sécurité</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
           Conforme à la législation CDP Sénégal (Loi 2008-12). Consentements horodatés et purge automatique.
         </p>
       </div>
@@ -228,12 +260,12 @@ HTML_HUB = """<!DOCTYPE html>
   </main>
 
   <!-- FOOTER -->
-  <footer class="max-w-6xl mx-auto w-full px-6 py-8 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+  <footer class="max-w-6xl mx-auto w-full px-6 py-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
     <p>PicsLive, by CreatifPics Studio · Dakar, Sénégal</p>
     <div class="flex items-center gap-6">
-      <a href="/borne" class="hover:text-slate-600 transition">Borne</a>
-      <a href="/admin" class="hover:text-slate-600 transition">Régie</a>
-      <a href="/galerie/pl_demo_token_8a9b7c" class="hover:text-slate-600 transition">Galerie Démo</a>
+      <a href="/borne" class="hover:text-slate-300 transition">Borne Kiosk</a>
+      <a href="/admin" class="hover:text-slate-300 transition">Console Régie</a>
+      <a href="/galerie/pl_demo_token_8a9b7c" class="hover:text-slate-300 transition">Galerie Démo</a>
     </div>
   </footer>
 </body>
@@ -241,7 +273,7 @@ HTML_HUB = """<!DOCTYPE html>
 """
 
 HTML_BORNE = """<!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -252,56 +284,68 @@ HTML_BORNE = """<!DOCTYPE html>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <style>
-    body { background-color: #F8F9FA; color: #090D16; font-family: 'Plus Jakarta Sans', sans-serif; user-select: none; }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 24px 48px -12px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+    body { background-color: #070D18; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; user-select: none; }
+    
+    .luxury-card {
+      background: rgba(17, 28, 53, 0.82);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.08);
     }
+    
+    .btn-gold {
+      background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #B8860B 100%);
+      color: #070D18;
+      box-shadow: 0 12px 28px -6px rgba(212, 175, 55, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .btn-gold:active {
+      transform: scale(0.98);
+    }
+
     .kiosk-btn {
       min-height: 58px;
       touch-action: manipulation;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .kiosk-btn:active {
-      transform: scale(0.97);
-    }
-    .viewfinder-frame {
-      box-shadow: 0 0 0 2000px rgba(9, 13, 22, 0.55);
-    }
-    @keyframes laser {
-      0%, 100% { top: 8%; opacity: 0.8; }
-      50% { top: 88%; opacity: 1; }
+
+    /* Laser de visée signature PicsLive */
+    @keyframes goldLaser {
+      0%, 100% { top: 7%; opacity: 0.7; }
+      50% { top: 89%; opacity: 1; }
     }
     .laser-line {
-      animation: laser 2.2s ease-in-out infinite;
+      animation: goldLaser 2.3s ease-in-out infinite;
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between relative overflow-hidden antialiased">
-  <!-- AURA SUBTILE -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-amber-100/60 rounded-full blur-3xl pointer-events-none -z-10"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-sky-100/60 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <!-- AURA DE FOND OR & OBSIDIENNE -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#D4AF37]/12 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-[#1E3A8A]/25 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
   <!-- HEADER BORNE -->
   <header class="max-w-4xl mx-auto w-full px-6 py-5 flex items-center justify-between z-20">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-2xl bg-[#090D16] flex items-center justify-center text-white shadow-sm">
-        <svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="w-10 h-10 rounded-2xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37] shadow-lg">
+        <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"></circle>
           <path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path>
         </svg>
       </div>
       <div>
-        <span class="text-base font-extrabold tracking-tight">Pics<span class="text-amber-500">Live</span></span>
-        <span class="block text-[10px] text-slate-400 font-semibold tracking-wider uppercase">CreatifPics</span>
+        <span class="text-base font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
+        <span class="block text-[10px] text-slate-400 font-semibold tracking-wider uppercase">CreatifPics Dakar</span>
       </div>
     </div>
 
-    <!-- INDICATEUR D'ÉTAPE EN PILULE (STYLE GENIE CHATBOT) -->
-    <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-slate-200/70 shadow-sm text-xs font-semibold text-slate-600">
-      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+    <!-- INDICATEUR D'ÉTAPE EN PILULE VERRE SOMBRE -->
+    <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111C35]/90 border border-[#D4AF37]/25 shadow-sm text-xs font-semibold text-slate-300">
+      <span class="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
       <span id="stepIndicator">Étape 1 sur 3</span>
     </div>
   </header>
@@ -310,100 +354,100 @@ HTML_BORNE = """<!DOCTYPE html>
   <main class="flex-1 flex items-center justify-center p-6 z-10 max-w-xl w-full mx-auto" id="mainContainer">
     <!-- ÉTAPE 1 : ACCUEIL -->
     <div id="stepWelcome" class="text-center w-full animate-fadeIn">
-      <div class="w-20 h-20 rounded-3xl bg-amber-50 border border-amber-200/70 text-amber-600 mx-auto flex items-center justify-center shadow-sm mb-6">
+      <div class="w-20 h-20 rounded-3xl bg-[#111C35] border border-[#D4AF37]/35 text-[#D4AF37] mx-auto flex items-center justify-center shadow-xl mb-6">
         <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
           <circle cx="12" cy="13" r="4"></circle>
         </svg>
       </div>
 
-      <span class="inline-block px-3 py-1 rounded-full bg-amber-100/70 text-amber-800 text-xs font-bold tracking-wider uppercase mb-3">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-bold tracking-wider uppercase mb-3">
         Gala d'Excellence Dakar
       </span>
 
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#090D16] tracking-tight mb-4">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
         Vos photos sont prêtes.
       </h1>
 
-      <p class="text-sm text-slate-500 max-w-md mx-auto mb-10 leading-relaxed">
+      <p class="text-sm text-slate-400 max-w-md mx-auto mb-10 leading-relaxed">
         Placez-vous devant l'objectif. Le système identifie vos apparitions sur les clichés de la soirée et crée votre collection privée.
       </p>
 
-      <button onclick="goToStep('consent')" class="kiosk-btn w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-base tracking-wide flex items-center justify-center gap-3 shadow-lg shadow-amber-500/25">
+      <button onclick="goToStep('consent')" class="btn-gold kiosk-btn w-full py-4 rounded-2xl font-bold text-base tracking-wide flex items-center justify-center gap-3">
         <span>Retrouver mes photos</span>
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="w-5 h-5 text-[#070D18]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </button>
 
-      <p class="mt-8 text-xs text-slate-400 flex items-center justify-center gap-1.5">
-        <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      <p class="mt-8 text-xs text-slate-500 flex items-center justify-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         <span>Conforme CDP Sénégal · Données biométriques protégées</span>
       </p>
     </div>
 
-    <!-- ÉTAPE 2 : CONSENTEMENT ÉPURÉ -->
-    <div id="stepConsent" class="glass-card p-8 sm:p-10 rounded-[32px] w-full hidden">
-      <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
+    <!-- ÉTAPE 2 : CONSENTEMENT -->
+    <div id="stepConsent" class="luxury-card p-8 sm:p-10 rounded-[32px] w-full hidden">
+      <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 flex items-center justify-center mb-5">
         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
       </div>
 
-      <h2 class="text-xl font-bold text-slate-900 mb-2">Consentement à l'analyse faciale</h2>
-      <p class="text-xs text-slate-500 leading-relaxed mb-6">
+      <h2 class="text-xl font-bold text-white mb-2">Consentement à l'analyse faciale</h2>
+      <p class="text-xs text-slate-400 leading-relaxed mb-6">
         Un selfie temporaire sera capturé pour comparer vos traits aux photos prises par nos photographes. Aucune empreinte n'est conservée après la clôture de l'événement.
       </p>
 
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/60 mb-8">
+      <div class="bg-[#070D18]/80 p-4 rounded-2xl border border-white/10 mb-8">
         <label class="flex items-start gap-3 cursor-pointer">
-          <input type="checkbox" id="chkConsentPhotos" checked class="mt-0.5 w-4 h-4 accent-amber-500 rounded cursor-pointer">
-          <span class="text-xs text-slate-700 font-medium">J'accepte l'analyse de mon visage exclusivement pour la remise de mes photos de cet événement.</span>
+          <input type="checkbox" id="chkConsentPhotos" checked class="mt-0.5 w-4 h-4 accent-[#D4AF37] rounded cursor-pointer">
+          <span class="text-xs text-slate-200 font-medium">J'accepte l'analyse de mon visage exclusivement pour la remise de mes photos de cet événement.</span>
         </label>
       </div>
 
       <div class="flex gap-3">
-        <button onclick="goToStep('welcome')" class="kiosk-btn flex-1 py-3.5 rounded-2xl bg-white border border-slate-200 text-slate-700 font-semibold text-sm">
+        <button onclick="goToStep('welcome')" class="kiosk-btn flex-1 py-3.5 rounded-2xl bg-[#182747] border border-white/10 text-slate-300 font-semibold text-sm">
           Retour
         </button>
-        <button onclick="startCaptureFlow()" class="kiosk-btn flex-1 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm shadow-md shadow-amber-500/20">
+        <button onclick="startCaptureFlow()" class="btn-gold kiosk-btn flex-1 py-3.5 rounded-2xl font-bold text-sm">
           Autoriser & Scanner
         </button>
       </div>
     </div>
 
-    <!-- ÉTAPE 3 : CAPTURE CAMERA AVEC VISEUR MODERNE -->
+    <!-- ÉTAPE 3 : CAPTURE CAMERA AVEC VISEUR HAUTE COUTURE -->
     <div id="stepCapture" class="flex flex-col items-center w-full hidden">
-      <div class="relative w-72 sm:w-80 h-96 sm:h-[400px] rounded-[36px] overflow-hidden bg-slate-900 shadow-2xl flex items-center justify-center">
+      <div class="relative w-72 sm:w-80 h-96 sm:h-[400px] rounded-[36px] overflow-hidden bg-[#070D18] border-2 border-[#D4AF37]/30 shadow-2xl flex items-center justify-center">
         <video id="webcamVideo" autoplay playsinline muted class="w-full h-full object-cover transform scale-x-[-1]"></video>
         
         <div id="cameraFallback" class="hidden text-center p-6 flex flex-col items-center text-white">
-          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-3 text-amber-400">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-3 text-[#D4AF37]">
             <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path></svg>
           </div>
           <p class="text-xs font-semibold">Mode Caméra Prêt</p>
           <p class="text-[11px] text-slate-400 mt-1">Appuyez sur Prendre le selfie</p>
         </div>
 
-        <!-- Hairline Corners Viseur Minimaliste -->
-        <div class="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-amber-400 rounded-tl-lg pointer-events-none"></div>
-        <div class="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-amber-400 rounded-tr-lg pointer-events-none"></div>
-        <div class="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-amber-400 rounded-bl-lg pointer-events-none"></div>
-        <div class="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-amber-400 rounded-br-lg pointer-events-none"></div>
+        <!-- Hairline Corners Viseur Or Minimaliste -->
+        <div class="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-[#D4AF37] rounded-tl-lg pointer-events-none"></div>
+        <div class="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-[#D4AF37] rounded-tr-lg pointer-events-none"></div>
+        <div class="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-[#D4AF37] rounded-bl-lg pointer-events-none"></div>
+        <div class="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-[#D4AF37] rounded-br-lg pointer-events-none"></div>
 
         <!-- Ligne de scan laser dorée douce -->
-        <div class="laser-line absolute left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent shadow-[0_0_8px_rgba(245,158,11,0.8)] pointer-events-none"></div>
+        <div class="laser-line absolute left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent shadow-[0_0_10px_rgba(212,175,55,0.9)] pointer-events-none"></div>
 
         <!-- Décompte moderne -->
-        <div id="countdownBox" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center hidden z-20">
-          <span id="countdownNumber" class="text-6xl font-extrabold text-amber-400 animate-ping">3</span>
+        <div id="countdownBox" class="absolute inset-0 bg-[#070D18]/80 backdrop-blur-sm flex items-center justify-center hidden z-20">
+          <span id="countdownNumber" class="text-6xl font-extrabold text-[#D4AF37] animate-ping">3</span>
         </div>
       </div>
 
       <div class="mt-6 flex gap-3 w-72 sm:w-80">
-        <button onclick="goToStep('consent')" class="kiosk-btn px-5 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 font-semibold shadow-sm">
+        <button onclick="goToStep('consent')" class="kiosk-btn px-5 py-3 rounded-2xl bg-[#111C35] border border-white/10 text-slate-300 font-semibold shadow-sm">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        <button onclick="triggerPhoto()" class="kiosk-btn flex-1 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-base shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2">
+        <button onclick="triggerPhoto()" class="btn-gold kiosk-btn flex-1 py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2">
           <span>Prendre le selfie</span>
         </button>
       </div>
@@ -411,88 +455,88 @@ HTML_BORNE = """<!DOCTYPE html>
 
     <!-- ÉTAPE 4 : CHARGEMENT ANALYSE BIOMÉTRIQUE -->
     <div id="stepAnalyzing" class="text-center w-full hidden">
-      <div class="w-20 h-20 mx-auto mb-6 rounded-full border-4 border-amber-200 border-t-amber-500 animate-spin"></div>
-      <h2 class="text-xl font-bold text-slate-900 mb-1">Recherche en cours</h2>
-      <p class="text-xs text-slate-500">Comparaison biométrique avec l'ensemble des photos de la soirée...</p>
+      <div class="w-20 h-20 mx-auto mb-6 rounded-full border-4 border-[#D4AF37]/20 border-t-[#D4AF37] animate-spin"></div>
+      <h2 class="text-xl font-bold text-white mb-1">Recherche en cours</h2>
+      <p class="text-xs text-slate-400">Comparaison biométrique avec l'ensemble des photos de la soirée...</p>
     </div>
 
     <!-- ÉTAPE 5 : FORMULAIRE LIVRAISON WHATSAPP -->
-    <div id="stepDetails" class="glass-card p-8 sm:p-10 rounded-[32px] w-full hidden">
+    <div id="stepDetails" class="luxury-card p-8 sm:p-10 rounded-[32px] w-full hidden">
       <div class="flex items-center gap-3 mb-6">
-        <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+        <div class="w-10 h-10 rounded-2xl bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30 flex items-center justify-center">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
         <div>
-          <h2 class="text-lg font-bold text-slate-900">Visage détecté</h2>
-          <p class="text-xs text-slate-500">Où souhaitez-vous recevoir votre lien d'accès ?</p>
+          <h2 class="text-lg font-bold text-white">Visage détecté</h2>
+          <p class="text-xs text-slate-400">Où souhaitez-vous recevoir votre lien d'accès ?</p>
         </div>
       </div>
 
       <form onsubmit="handleFormSubmit(event)" class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Votre Nom & Prénom</label>
-          <input type="text" id="inpNom" required placeholder="ex: Aminata Sow" class="w-full bg-white border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-slate-900 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition shadow-sm">
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Votre Nom & Prénom</label>
+          <input type="text" id="inpNom" required placeholder="ex: Aminata Sow" class="w-full bg-[#070D18] border border-white/10 rounded-2xl py-3.5 px-4 text-sm text-white outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition shadow-inner">
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Numéro WhatsApp</label>
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Numéro WhatsApp</label>
           <div class="relative flex items-center">
-            <span class="absolute left-3.5 px-2 py-1 rounded-lg bg-slate-100 text-[11px] font-bold text-slate-600">
+            <span class="absolute left-3.5 px-2.5 py-1 rounded-lg bg-[#182747] border border-white/5 text-[11px] font-bold text-[#D4AF37]">
               🇸🇳 +221
             </span>
-            <input type="tel" id="inpTel" required placeholder="77 123 45 67" class="w-full bg-white border border-slate-200 rounded-2xl py-3.5 pl-24 pr-4 text-sm text-slate-900 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition shadow-sm">
+            <input type="tel" id="inpTel" required placeholder="77 123 45 67" class="w-full bg-[#070D18] border border-white/10 rounded-2xl py-3.5 pl-24 pr-4 text-sm text-white outline-none focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 transition shadow-inner">
           </div>
           <p class="text-[11px] text-slate-400 mt-1.5">Votre numéro sert d'identifiant unique sécurisé pour votre galerie.</p>
         </div>
 
         <div class="pt-2 space-y-2">
           <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="checkbox" id="chkMajeur" checked class="w-4 h-4 accent-amber-500 rounded">
-            <span class="text-xs text-slate-600 font-medium">J'ai 18 ans ou plus.</span>
+            <input type="checkbox" id="chkMajeur" checked class="w-4 h-4 accent-[#D4AF37] rounded">
+            <span class="text-xs text-slate-300 font-medium">J'ai 18 ans ou plus.</span>
           </label>
           <label class="flex items-center gap-2.5 cursor-pointer">
-            <input type="checkbox" id="chkMarketing" class="w-4 h-4 accent-amber-500 rounded">
-            <span class="text-xs text-slate-500">J'accepte de recevoir les invitations exclusives de CreatifPics.</span>
+            <input type="checkbox" id="chkMarketing" class="w-4 h-4 accent-[#D4AF37] rounded">
+            <span class="text-xs text-slate-400">J'accepte de recevoir les invitations exclusives de CreatifPics.</span>
           </label>
         </div>
 
-        <button type="submit" id="btnSubmitForm" class="kiosk-btn w-full mt-4 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-base shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
+        <button type="submit" id="btnSubmitForm" class="btn-gold kiosk-btn w-full mt-4 py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2">
           <span>Générer mon QR Code</span>
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <svg class="w-4 h-4 text-[#070D18]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
       </form>
     </div>
 
-    <!-- ÉTAPE 6 : REMISE DU QR CODE (STYLE AIRDROP / APPLE CARD) -->
-    <div id="stepResult" class="glass-card p-8 sm:p-10 rounded-[36px] w-full text-center hidden animate-fadeIn">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3 border border-emerald-200/60">
+    <!-- ÉTAPE 6 : REMISE DU QR CODE (STYLE LUXURY AIRDROP) -->
+    <div id="stepResult" class="luxury-card p-8 sm:p-10 rounded-[36px] w-full text-center hidden animate-fadeIn">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30 text-xs font-bold mb-3">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        <span id="badgeFound">2 photos trouvées</span>
+        <span id="badgeFound">2 photos trouvées pour vous</span>
       </div>
 
-      <h2 class="text-2xl font-extrabold text-slate-900 mb-1">Scannez pour ouvrir</h2>
-      <p class="text-xs text-slate-500 mb-6">Pointez l'appareil photo de votre smartphone vers l'écran</p>
+      <h2 class="text-2xl font-extrabold text-white mb-1">Scannez pour ouvrir</h2>
+      <p class="text-xs text-slate-400 mb-6">Pointez l'appareil photo de votre smartphone vers l'écran</p>
 
-      <div class="bg-white p-5 rounded-3xl inline-block shadow-md border border-slate-100 mb-6">
+      <div class="bg-white p-5 rounded-3xl inline-block shadow-2xl border-4 border-[#D4AF37]/30 mb-6">
         <canvas id="qrCanvas" class="w-52 h-52 sm:w-60 sm:h-60 mx-auto"></canvas>
       </div>
 
       <div class="mb-6">
-        <a id="lnkDirectGallery" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-500 hover:underline">
+        <a id="lnkDirectGallery" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#D4AF37] hover:underline">
           <span>Ouvrir la galerie directement sur cet écran</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </div>
 
-      <div class="flex items-center justify-between text-xs text-slate-400 border-t border-slate-100 pt-4">
-        <span>Retour automatique dans <strong id="resetSec" class="text-slate-700">60</strong>s</span>
-        <button onclick="resetKiosk()" class="text-slate-600 hover:text-slate-900 font-bold">Terminer</button>
+      <div class="flex items-center justify-between text-xs text-slate-400 border-t border-white/10 pt-4">
+        <span>Retour automatique dans <strong id="resetSec" class="text-white">60</strong>s</span>
+        <button onclick="resetKiosk()" class="text-[#D4AF37] hover:text-white font-bold">Terminer</button>
       </div>
     </div>
   </main>
 
   <!-- FOOTER -->
-  <footer class="max-w-4xl mx-auto w-full text-center py-4 text-xs text-slate-400">
+  <footer class="max-w-4xl mx-auto w-full text-center py-4 text-xs text-slate-500">
     PicsLive · Système de récupération photo instantanée · CreatifPics Dakar
   </footer>
 
@@ -619,7 +663,7 @@ HTML_BORNE = """<!DOCTYPE html>
 """
 
 HTML_GALERIE = """<!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -629,24 +673,39 @@ HTML_GALERIE = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color: #F8F9FA; color: #090D16; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-bar {
-      background: rgba(255, 255, 255, 0.88);
+    body { background-color: #070D18; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }
+    
+    .luxury-card {
+      background: rgba(17, 28, 53, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Floating Liquid Action Bar inspirée de la référence 2 & 3 */
+    .floating-bar {
+      background: rgba(17, 28, 53, 0.88);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between antialiased">
-  <!-- HEADER MOBILE INSPIRÉ DE L'IMAGE 2 (COLLECTION) -->
-  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 px-5 py-4">
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-[#D4AF37] selection:text-[#070D18]">
+  
+  <!-- AURA DE FOND -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+  <!-- HEADER MOBILE -->
+  <header class="sticky top-0 z-40 bg-[#070D18]/85 backdrop-blur-md border-b border-white/5 px-5 py-4">
     <div class="max-w-2xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-[#090D16] flex items-center justify-center text-white">
-          <svg class="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
+        <div class="w-8 h-8 rounded-xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]">
+          <svg class="w-4 h-4 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
         </div>
-        <span class="text-sm font-extrabold tracking-tight">Pics<span class="text-amber-500">Live</span></span>
+        <span class="text-sm font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
       </div>
 
       <button onclick="shareWhatsApp()" class="px-4 py-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition active:scale-95">
@@ -656,33 +715,42 @@ HTML_GALERIE = """<!DOCTYPE html>
     </div>
   </header>
 
-  <!-- BANNIÈRE DE COLLECTION (STYLE JAPAN GROUP TRIP - IMAGE 2) -->
+  <!-- BANNIÈRE DE COLLECTION (STYLE JAPAN GROUP TRIP - IMAGE 2, THÈME SOMBRE) -->
   <section class="px-5 pt-6 pb-4 max-w-2xl mx-auto w-full">
-    <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+    <div class="luxury-card p-6 rounded-[32px]">
       <div class="flex items-center gap-2 mb-2">
-        <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[11px] font-bold">Collection Personnelle</span>
-        <span class="text-xs text-slate-400">·</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[11px] font-bold">Collection Personnelle</span>
+        <span class="text-xs text-slate-500">·</span>
         <span class="text-xs text-slate-400" id="eventDate">15 Nov 2026</span>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" id="guestName">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" id="guestName">
         Bienvenue
       </h1>
-      <p class="text-xs text-slate-500 mt-1" id="eventInfo">Gala d'Excellence Dakar · King Fahd Palace</p>
+      <p class="text-xs text-slate-400 mt-1" id="eventInfo">Gala d'Excellence Dakar · King Fahd Palace</p>
     </div>
   </section>
 
   <!-- LISTE DES PHOTOS -->
-  <main class="flex-1 px-5 pb-20 max-w-2xl mx-auto w-full">
+  <main class="flex-1 px-5 pb-24 max-w-2xl mx-auto w-full">
     <div class="flex items-center justify-between my-3 px-1">
-      <h2 class="text-sm font-bold text-slate-800" id="photoCountTitle">Vos photos</h2>
+      <h2 class="text-sm font-bold text-slate-200" id="photoCountTitle">Vos photos</h2>
       <span class="text-xs text-slate-400 font-medium">Actualisation en direct</span>
     </div>
 
-    <div class="grid grid-cols-2 gap-3" id="galleryGrid"></div>
+    <div class="grid grid-cols-2 gap-3.5" id="galleryGrid"></div>
   </main>
 
-  <footer class="max-w-2xl mx-auto w-full text-center py-6 text-xs text-slate-400 border-t border-slate-100">
+  <!-- BARRE FLOTTANTE D'ACTION (INSPIRÉE DE LA RÉFÉRENCE 2) -->
+  <div class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 floating-bar rounded-full px-5 py-2.5 flex items-center gap-3">
+    <button onclick="shareWhatsApp()" class="px-4 py-2 rounded-full bg-[#25D366] text-white font-bold text-xs flex items-center gap-2 shadow-sm">
+      <span>Partager WhatsApp</span>
+    </button>
+    <span class="text-xs text-slate-400">·</span>
+    <span class="text-xs text-slate-300 font-medium" id="floatingCount">2 photos</span>
+  </div>
+
+  <footer class="max-w-2xl mx-auto w-full text-center py-6 text-xs text-slate-500 border-t border-white/5">
     Photos délivrées par PicsLive · CreatifPics Dakar
   </footer>
 
@@ -699,23 +767,24 @@ HTML_GALERIE = """<!DOCTYPE html>
           document.getElementById('guestName').innerText = data.gallery.nom;
           document.getElementById('eventInfo').innerText = `${data.gallery.evenementNom} · ${data.gallery.lieu || 'Dakar'}`;
           document.getElementById('photoCountTitle').innerText = `${data.gallery.photos.length} photos retenues`;
+          document.getElementById('floatingCount').innerText = `${data.gallery.photos.length} photos`;
 
           const grid = document.getElementById('galleryGrid');
           if (data.gallery.photos.length === 0) {
             grid.innerHTML = '<p class="col-span-full text-center text-xs text-slate-400 py-12">Aucune photo pour le moment. Votre galerie se remplira dès que les photographes captureront votre visage.</p>';
           } else {
             grid.innerHTML = data.gallery.photos.map(p => `
-              <div class="group relative rounded-[24px] overflow-hidden bg-slate-100 border border-slate-200/60 aspect-[3/4] shadow-sm" id="card_${p.lienId}">
+              <div class="group relative rounded-[26px] overflow-hidden bg-[#111C35] border border-white/10 aspect-[3/4] shadow-md" id="card_${p.lienId}">
                 <img src="${p.url}" class="w-full h-full object-cover">
-                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-extrabold text-slate-800 shadow-sm">
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-[#070D18]/85 backdrop-blur-md text-[10px] font-extrabold text-[#D4AF37] border border-[#D4AF37]/30 shadow-sm">
                   ${p.similarite ? p.similarite + '%' : 'Reconnu'}
                 </span>
                 
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3">
                   <a href="${p.url}" target="_blank" download class="px-2.5 py-1.5 rounded-xl bg-white text-slate-900 text-xs font-bold shadow-sm hover:bg-slate-100">
                     Enregistrer
                   </a>
-                  <button onclick="removePhoto('${p.lienId}')" class="px-2.5 py-1.5 rounded-xl bg-slate-900/70 text-slate-300 text-xs hover:text-rose-400 font-medium">
+                  <button onclick="removePhoto('${p.lienId}')" class="px-2.5 py-1.5 rounded-xl bg-[#111C35]/90 text-slate-300 text-xs hover:text-rose-400 font-medium border border-white/10">
                     Ce n'est pas moi
                   </button>
                 </div>
@@ -750,7 +819,7 @@ HTML_GALERIE = """<!DOCTYPE html>
 """
 
 HTML_ADMIN = """<!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -760,43 +829,48 @@ HTML_ADMIN = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color: #F8F9FA; color: #090D16; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.95);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+    body { background-color: #070D18; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .luxury-card {
+      background: rgba(17, 28, 53, 0.72);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 50%, #B8860B 100%);
+      color: #070D18;
+      transition: all 0.2s ease;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between antialiased">
-  <header class="border-b border-slate-200/70 bg-white/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30">
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-[#D4AF37] selection:text-[#070D18]">
+  <header class="border-b border-white/5 bg-[#070D18]/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-[#090D16] flex items-center justify-center text-white">
-          <svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
+        <div class="w-9 h-9 rounded-xl bg-[#111C35] border border-[#D4AF37]/30 flex items-center justify-center text-[#D4AF37]">
+          <svg class="w-5 h-5 text-[#D4AF37]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"></circle><path d="M3 9a2 2 0 0 1 2-2h1.5a2 2 0 0 0 1.6-.8L9 4h6l.9 2.2a2 2 0 0 0 1.6.8H19a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path></svg>
         </div>
         <div>
-          <span class="text-base font-extrabold tracking-tight">Pics<span class="text-amber-500">Live</span></span>
-          <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase">Régie Studio</span>
+          <span class="text-base font-extrabold tracking-tight text-white">Pics<span class="text-[#D4AF37]">Live</span></span>
+          <span class="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#111C35] text-[#D4AF37] border border-[#D4AF37]/30 uppercase">Régie Studio</span>
         </div>
       </div>
-      <a href="/borne" target="_blank" class="px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition">
+      <a href="/borne" target="_blank" class="px-4 py-2 rounded-full bg-[#111C35] hover:bg-[#182747] text-[#D4AF37] border border-[#D4AF37]/30 text-xs font-bold transition">
         Ouvrir la Borne Kiosk &rarr;
       </a>
     </div>
   </header>
 
   <main class="max-w-6xl mx-auto w-full px-6 py-8 flex-1 space-y-6">
-    <div class="glass-card p-6 rounded-[28px] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div class="luxury-card p-6 rounded-[28px] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Session en direct</span>
-        <h1 class="text-2xl font-extrabold text-slate-900 mt-0.5" id="evName">Gala d'Excellence Dakar 2026</h1>
+        <span class="text-xs font-bold uppercase tracking-wider text-[#D4AF37]">Session en direct</span>
+        <h1 class="text-2xl font-extrabold text-white mt-0.5" id="evName">Gala d'Excellence Dakar 2026</h1>
         <p class="text-xs text-slate-400 mt-1" id="evDetails">King Fahd Palace, Dakar · Code : GALA-2026</p>
       </div>
       <div class="flex items-center gap-2">
-        <span class="px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-xs font-bold flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="px-3.5 py-1.5 rounded-full bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30 text-xs font-bold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
           Indexation Active
         </span>
       </div>
@@ -804,35 +878,35 @@ HTML_ADMIN = """<!DOCTYPE html>
 
     <!-- METRIQUES BENTO -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass-card p-5 rounded-[24px]">
+      <div class="luxury-card p-5 rounded-[24px]">
         <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Photos Reçues</span>
-        <p class="text-3xl font-extrabold text-slate-900 mt-1" id="cntPhotos">5</p>
-        <span class="text-[11px] text-slate-400">Indexées en collection</span>
+        <p class="text-3xl font-extrabold text-white mt-1" id="cntPhotos">5</p>
+        <span class="text-[11px] text-slate-500">Indexées en collection</span>
       </div>
-      <div class="glass-card p-5 rounded-[24px]">
+      <div class="luxury-card p-5 rounded-[24px]">
         <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Invités Reconnus</span>
-        <p class="text-3xl font-extrabold text-emerald-600 mt-1" id="cntGuests">1</p>
-        <span class="text-[11px] text-slate-400">Passages borne validés</span>
+        <p class="text-3xl font-extrabold text-[#10B981] mt-1" id="cntGuests">1</p>
+        <span class="text-[11px] text-slate-500">Passages borne validés</span>
       </div>
-      <div class="glass-card p-5 rounded-[24px]">
+      <div class="luxury-card p-5 rounded-[24px]">
         <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Contacts WhatsApp</span>
-        <p class="text-3xl font-extrabold text-blue-600 mt-1" id="cntContacts">1</p>
-        <span class="text-[11px] text-slate-400">Format E.164 normalisé</span>
+        <p class="text-3xl font-extrabold text-blue-400 mt-1" id="cntContacts">1</p>
+        <span class="text-[11px] text-slate-500">Format E.164 normalisé</span>
       </div>
-      <div class="glass-card p-5 rounded-[24px]">
+      <div class="luxury-card p-5 rounded-[24px]">
         <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Taux d'Opt-in</span>
-        <p class="text-3xl font-extrabold text-amber-500 mt-1" id="rateOptIn">100%</p>
-        <span class="text-[11px] text-slate-400">Consentements marketing</span>
+        <p class="text-3xl font-extrabold text-[#D4AF37] mt-1" id="rateOptIn">100%</p>
+        <span class="text-[11px] text-slate-500">Consentements marketing</span>
       </div>
     </div>
 
     <!-- SIMULATEUR D'INGESTION PHOTO -->
-    <div class="glass-card p-6 rounded-[28px]">
-      <h2 class="text-base font-bold text-slate-900 mb-1">Ingestion de photo en direct (Boîtier SFTP)</h2>
+    <div class="luxury-card p-6 rounded-[28px]">
+      <h2 class="text-base font-bold text-white mb-1">Ingestion de photo en direct (Boîtier SFTP)</h2>
       <p class="text-xs text-slate-400 mb-4">Ajoutez une image pour simuler l'envoi direct depuis un Canon R6 Mark II.</p>
       <form onsubmit="handleAddPhoto(event)" class="flex flex-col sm:flex-row gap-3">
-        <input type="url" id="inpPhotoUrl" required placeholder="URL de l'image (https://...)" class="flex-1 bg-white border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-900 outline-none focus:border-amber-500">
-        <button type="submit" id="btnUpload" class="px-6 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-white font-bold text-xs shadow-md shadow-amber-500/20">
+        <input type="url" id="inpPhotoUrl" required placeholder="URL de l'image (https://...)" class="flex-1 bg-[#070D18] border border-white/10 rounded-2xl px-4 py-3 text-sm text-white outline-none focus:border-[#D4AF37]">
+        <button type="submit" id="btnUpload" class="btn-gold px-6 py-3 rounded-2xl font-bold text-xs shadow-md">
           + Indexer la photo
         </button>
       </form>
@@ -840,12 +914,12 @@ HTML_ADMIN = """<!DOCTYPE html>
 
     <!-- LISTE DES PHOTOS -->
     <div>
-      <h2 class="text-base font-bold text-slate-800 mb-3">Galerie de l'événement</h2>
+      <h2 class="text-base font-bold text-slate-200 mb-3">Galerie de l'événement</h2>
       <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3" id="photoGrid"></div>
     </div>
   </main>
 
-  <footer class="border-t border-slate-200/60 py-4 text-center text-xs text-slate-400">
+  <footer class="border-t border-white/5 py-4 text-center text-xs text-slate-500">
     PicsLive Console Régie · CreatifPics Dakar
   </footer>
 
@@ -867,9 +941,9 @@ HTML_ADMIN = """<!DOCTYPE html>
       if (phData.success) {
         const grid = document.getElementById('photoGrid');
         grid.innerHTML = phData.photos.map(p => `
-          <div class="relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/60 aspect-square shadow-sm">
+          <div class="relative rounded-2xl overflow-hidden bg-[#111C35] border border-white/10 aspect-square shadow-sm">
             <img src="${p.url}" class="w-full h-full object-cover">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-bold text-slate-800 shadow-sm">
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-[#070D18]/85 backdrop-blur-md text-[10px] font-bold text-[#D4AF37] border border-[#D4AF37]/30 shadow-sm">
               ${p.visagesDetectes || 1} visage(s)
             </span>
           </div>
@@ -1168,7 +1242,7 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
 if __name__ == "__main__":
-    print(f"PicsLive Premium Server actif sur http://localhost:{PORT}")
+    print(f"PicsLive Dark Luxury Server actif sur http://localhost:{PORT}")
     httpd = HTTPServer(("0.0.0.0", PORT), PicsLiveHandler)
     try:
         httpd.serve_forever()
