@@ -135,6 +135,13 @@
       "whatsappE164": "+221778765643",
       "majeur": true,
       "creeLe": "2026-11-04T21:23:23Z"
+    },
+    {
+      "id": "cnt_1793831710_885",
+      "nom": "Mme la Superviseuse",
+      "whatsappE164": "+221778889900",
+      "majeur": true,
+      "creeLe": "2026-11-04T22:35:10Z"
     }
   ],
   "participations": [
@@ -285,6 +292,26 @@
       "jetonGalerie": "pl_245616_7611",
       "nom": "Aziz Fast",
       "reconnuLe": "2026-11-04T21:26:51Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793831710_530",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_933805_1710",
+      "nom": "Lamine Diack",
+      "reconnuLe": "2026-11-04T22:35:10Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793831710_121",
+      "contactId": "cnt_1793831710_885",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_312817_1710",
+      "nom": "Mme la Superviseuse",
+      "reconnuLe": "2026-11-04T22:35:10Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
     }
@@ -577,6 +604,42 @@
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T21:26:51Z",
       "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793831710_1",
+      "participationId": "part_1793831710_530",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T22:35:10Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793831710_2",
+      "participationId": "part_1793831710_530",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T22:35:10Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793831710_1",
+      "participationId": "part_1793831710_121",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T22:35:10Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793831710_2",
+      "participationId": "part_1793831710_121",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T22:35:10Z",
+      "borneId": "borne_ipad_01"
     }
   ],
   "liensPhotos": [
@@ -810,6 +873,70 @@
       "photoId": "photo_1793814422_42",
       "similarite": 91.7,
       "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_178",
+      "participationId": "part_1793831710_530",
+      "photoId": "photo_1793814422_82",
+      "similarite": 95.3,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_928",
+      "participationId": "part_1793831710_530",
+      "photoId": "photo_1793814421_28",
+      "similarite": 90.8,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_281",
+      "participationId": "part_1793831710_530",
+      "photoId": "photo_1793814421_58",
+      "similarite": 89.7,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_879",
+      "participationId": "part_1793831710_530",
+      "photoId": "photo_1793814420_68",
+      "similarite": 92.1,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_415",
+      "participationId": "part_1793831710_121",
+      "photoId": "photo_1793814422_93",
+      "similarite": 96.1,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_677",
+      "participationId": "part_1793831710_121",
+      "photoId": "photo_1793814422_42",
+      "similarite": 88.9,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_713",
+      "participationId": "part_1793831710_121",
+      "photoId": "photo_1793814422_62",
+      "similarite": 92.9,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793831710_856",
+      "participationId": "part_1793831710_121",
+      "photoId": "photo_1793814422_63",
+      "similarite": 93.0,
+      "zone": "sure",
       "statut": "actif"
     }
   ]
