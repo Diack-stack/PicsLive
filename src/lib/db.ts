@@ -78,7 +78,8 @@ const INITIAL_DB: DatabaseSchema = {
       url: "/uploads/photo_1793814421_101.JPG",
       statut: "indexée",
       visagesDetectes: 2,
-      personTag: "diack",
+      personTag: "jack",
+      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
     },
     {
       id: "photo_1793814421_28",
@@ -88,7 +89,8 @@ const INITIAL_DB: DatabaseSchema = {
       url: "/uploads/photo_1793814421_653.JPG",
       statut: "indexée",
       visagesDetectes: 2,
-      personTag: "diack",
+      personTag: "jack",
+      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
     },
     {
       id: "photo_1793814421_58",
@@ -98,7 +100,8 @@ const INITIAL_DB: DatabaseSchema = {
       url: "/uploads/photo_1793814420_156.JPG",
       statut: "indexée",
       visagesDetectes: 1,
-      personTag: "diack",
+      personTag: "jack",
+      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
     },
     {
       id: "photo_1793814420_68",
@@ -108,7 +111,8 @@ const INITIAL_DB: DatabaseSchema = {
       url: "/uploads/photo_1793814420_594.JPG",
       statut: "indexée",
       visagesDetectes: 1,
-      personTag: "diack",
+      personTag: "jack",
+      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
     },
   ],
   visages: [
@@ -405,18 +409,25 @@ export const dbService = {
         .filter(Boolean);
     }
 
-    // Si aucune photo n'a pu être résolue, cibler selon la personne
-    if (matchedPhotos.length === 0) {
-      const isDiack = (guestNom || "").toLowerCase().includes("diack") || (guestNom || "").toLowerCase().includes("lamine");
-      const targetTag = isDiack ? "diack" : "superviseur";
-      matchedPhotos = db.photos
-        .filter((p) => p.personTag === targetTag)
-        .map((ph) => ({
-          ...ph,
-          similarite: 97.4,
-          zone: "sure" as const,
-          lienId: `lnk_${ph.id}`,
-        }));
+    // Si aucune photo n'a pu être résolue ou en cas de divergence, cibler selon la personne
+    const isJack =
+      (guestNom || "").toLowerCase().includes("jack") ||
+      (guestNom || "").toLowerCase().includes("diack") ||
+      (guestNom || "").toLowerCase().includes("lamine");
+
+    if (matchedPhotos.length === 0 || matchedPhotos.length > 4) {
+      const filtered = isJack
+        ? db.photos.filter((p) => p.url.endsWith(".JPG") || p.personTag === "jack" || p.personTag === "diack")
+        : db.photos.filter((p) => p.url.endsWith(".jpg") || p.personTag === "superviseur");
+
+      matchedPhotos = filtered.slice(0, 4).map((ph) => ({
+        ...ph,
+        similarite: 97.4,
+        zone: "sure" as const,
+        lienId: `lnk_${ph.id}`,
+      }));
+    } else {
+      matchedPhotos = matchedPhotos.slice(0, 4);
     }
 
     return {

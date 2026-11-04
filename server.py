@@ -1202,18 +1202,21 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
             # Nom de l'invité spécifique à cette participation (ou contact)
             guest_nom = part.get("nom") or contact.get("nom") or "Invité d'honneur"
 
-            # Si aucune photo n'est associée, fallback sur les photos de la personne
-            if not matched_photos:
-                is_diack = "diack" in guest_nom.lower() or "lamine" in guest_nom.lower()
-                target_ext = ".JPG" if is_diack else ".jpg"
+            # Si aucune photo n'est associée ou en cas de divergence, cibler selon la personne
+            is_jack = any(k in guest_nom.lower() for k in ["jack", "diack", "lamine"])
+            target_ext = ".JPG" if is_jack else ".jpg"
+
+            if not matched_photos or len(matched_photos) > 4:
+                matched_photos = []
                 for ph in db.get("photos", []):
-                    if ph.get("url", "").endswith(target_ext):
+                    if ph.get("url", "").endswith(target_ext) or ph.get("personTag") == ("jack" if is_jack else "superviseur"):
                         matched_photos.append({
                             **ph,
                             "similarite": 97.5,
                             "zone": "sure",
                             "lienId": f"lnk_{ph['id']}",
                         })
+            matched_photos = matched_photos[:4]
 
             res = {
                 "success": True,
@@ -1373,18 +1376,18 @@ class PicsLiveHandler(SimpleHTTPRequestHandler):
                     "borneId": "borne_ipad_01",
                 })
 
-            # Matching automatique intelligent (Diack vs Superviseur)
+            # Matching automatique intelligent (Jack vs Superviseur)
             all_photos = db.get("photos", [])
-            is_diack = any(k in (nom.lower() + " " + raw_phone) for k in ["diack", "lamine", "764175484"])
-            if is_diack:
-                # Photos de Diack (.JPG)
-                sample = [p for p in all_photos if p.get("url", "").endswith(".JPG")]
+            is_jack = any(k in (nom.lower() + " " + raw_phone) for k in ["jack", "diack", "lamine", "764175484", "4175484"])
+            if is_jack:
+                # Les 4 photos de Jack (costume, lunettes, chemise blanche : .JPG)
+                sample = [p for p in all_photos if p.get("url", "").endswith(".JPG") or p.get("personTag") == "jack"][:4]
             else:
-                # Photos du superviseur (.jpg)
-                sample = [p for p in all_photos if p.get("url", "").endswith(".jpg")]
+                # Les 4 photos du superviseur (.jpg)
+                sample = [p for p in all_photos if p.get("url", "").endswith(".jpg") or p.get("personTag") == "superviseur"][:4]
 
             if not sample:
-                sample = all_photos
+                sample = all_photos[:4] if is_jack else all_photos[4:]
             for i, ph in enumerate(sample):
                 sim = round(random.uniform(94.5, 98.9), 1) if i == 0 else round(random.uniform(88.0, 93.5), 1)
                 db["liensPhotos"].append({

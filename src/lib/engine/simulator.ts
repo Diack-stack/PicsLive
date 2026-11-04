@@ -54,13 +54,34 @@ export class SimulatorFaceEngine implements FaceEngine {
     const sureVal = thresholds.sure ?? thresholds.sur ?? 92;
     const probVal = thresholds.probable ?? 82;
 
-    // Détection de la personne ciblée (Diack vs Superviseur)
+    // Détection de Jack (Costume, lunettes, chemise blanche) vs Superviseur
     const hint = (guestHint || "").toLowerCase();
-    const isDiack = hint.includes("diack") || hint.includes("lamine") || hint.includes("764175484");
-    const targetTag = isDiack ? "diack" : "superviseur";
+    const isJack =
+      hint.includes("jack") ||
+      hint.includes("diack") ||
+      hint.includes("lamine") ||
+      hint.includes("764175484") ||
+      hint.includes("4175484");
 
-    const candidatePhotos = allPhotos.filter((p) => p.personTag === targetTag);
-    const selected = candidatePhotos.length > 0 ? candidatePhotos : allPhotos;
+    // Les 4 photos de Jack sont celles en .JPG (costume, lunettes, chemise blanche)
+    // Les 4 photos du superviseur sont celles en .jpg
+    let selected: PhotoData[] = [];
+    if (isJack) {
+      selected = allPhotos.filter(
+        (p) => p.url.endsWith(".JPG") || p.personTag === "jack" || p.personTag === "diack"
+      );
+    } else {
+      selected = allPhotos.filter(
+        (p) => p.url.endsWith(".jpg") || p.personTag === "superviseur"
+      );
+    }
+
+    // Sécurité stricte : toujours exactement 4 photos distinctes, JAMAIS 8 photos !
+    if (selected.length === 0) {
+      selected = isJack ? allPhotos.slice(4) : allPhotos.slice(0, 4);
+    } else if (selected.length > 4) {
+      selected = selected.slice(0, 4);
+    }
 
     const matches: FaceMatch[] = selected.map((photo, index) => {
       const isSure = index < selected.length;

@@ -28,7 +28,8 @@ export interface PhotoData {
   url: string;
   statut: "reçue" | "traitée" | "indexée" | "erreur";
   visagesDetectes: number;
-  personTag?: "diack" | "superviseur";
+  personTag?: "jack" | "diack" | "superviseur";
+  nomPersonne?: string;
   largeur?: number;
   hauteur?: number;
 }

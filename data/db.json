@@ -32,7 +32,9 @@
       "priseLe": "2026-11-04T17:47:02Z",
       "url": "/uploads/photo_1793814422_105.jpg",
       "statut": "indexée",
-      "visagesDetectes": 1
+      "visagesDetectes": 1,
+      "personTag": "superviseur",
+      "nomPersonne": "Superviseur"
     },
     {
       "id": "photo_1793814422_42",
@@ -41,7 +43,9 @@
       "priseLe": "2026-11-04T17:47:02Z",
       "url": "/uploads/photo_1793814422_636.jpg",
       "statut": "indexée",
-      "visagesDetectes": 3
+      "visagesDetectes": 3,
+      "personTag": "superviseur",
+      "nomPersonne": "Superviseur"
     },
     {
       "id": "photo_1793814422_62",
@@ -50,7 +54,9 @@
       "priseLe": "2026-11-04T17:47:02Z",
       "url": "/uploads/photo_1793814422_715.jpg",
       "statut": "indexée",
-      "visagesDetectes": 1
+      "visagesDetectes": 1,
+      "personTag": "superviseur",
+      "nomPersonne": "Superviseur"
     },
     {
       "id": "photo_1793814422_63",
@@ -59,7 +65,9 @@
       "priseLe": "2026-11-04T17:47:02Z",
       "url": "/uploads/photo_1793814422_135.jpg",
       "statut": "indexée",
-      "visagesDetectes": 3
+      "visagesDetectes": 3,
+      "personTag": "superviseur",
+      "nomPersonne": "Superviseur"
     },
     {
       "id": "photo_1793814422_82",
@@ -68,7 +76,9 @@
       "priseLe": "2026-11-04T17:47:02Z",
       "url": "/uploads/photo_1793814421_101.JPG",
       "statut": "indexée",
-      "visagesDetectes": 2
+      "visagesDetectes": 2,
+      "personTag": "jack",
+      "nomPersonne": "Jack / Diack (Costume, lunettes, chemise blanche)"
     },
     {
       "id": "photo_1793814421_28",
@@ -77,7 +87,9 @@
       "priseLe": "2026-11-04T17:47:01Z",
       "url": "/uploads/photo_1793814421_653.JPG",
       "statut": "indexée",
-      "visagesDetectes": 2
+      "visagesDetectes": 2,
+      "personTag": "jack",
+      "nomPersonne": "Jack / Diack (Costume, lunettes, chemise blanche)"
     },
     {
       "id": "photo_1793814421_58",
@@ -86,7 +98,9 @@
       "priseLe": "2026-11-04T17:47:01Z",
       "url": "/uploads/photo_1793814420_156.JPG",
       "statut": "indexée",
-      "visagesDetectes": 1
+      "visagesDetectes": 1,
+      "personTag": "jack",
+      "nomPersonne": "Jack / Diack (Costume, lunettes, chemise blanche)"
     },
     {
       "id": "photo_1793814420_68",
@@ -95,7 +109,9 @@
       "priseLe": "2026-11-04T17:47:00Z",
       "url": "/uploads/photo_1793814420_594.JPG",
       "statut": "indexée",
-      "visagesDetectes": 1
+      "visagesDetectes": 1,
+      "personTag": "jack",
+      "nomPersonne": "Jack / Diack (Costume, lunettes, chemise blanche)"
     }
   ],
   "visages": [],
@@ -110,7 +126,7 @@
     },
     {
       "id": "cnt_1793802152_526",
-      "nom": "Lamine Diack",
+      "nom": "Jack",
       "whatsappE164": "+221764175484",
       "majeur": true,
       "creeLe": "2026-11-04T14:22:32Z"
@@ -142,6 +158,13 @@
       "whatsappE164": "+221778889900",
       "majeur": true,
       "creeLe": "2026-11-04T22:35:10Z"
+    },
+    {
+      "id": "cnt_1793834856_590",
+      "nom": "M. le Superviseur",
+      "whatsappE164": "+221771234567",
+      "majeur": true,
+      "creeLe": "2026-11-04T23:27:36Z"
     }
   ],
   "participations": [
@@ -312,6 +335,26 @@
       "jetonGalerie": "pl_312817_1710",
       "nom": "Mme la Superviseuse",
       "reconnuLe": "2026-11-04T22:35:10Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793834856_285",
+      "contactId": "cnt_1793802152_526",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_983785_4856",
+      "nom": "Jack",
+      "reconnuLe": "2026-11-04T23:27:36Z",
+      "nbPhotos": 2,
+      "statutRecuperation": "en_attente"
+    },
+    {
+      "id": "part_1793834856_615",
+      "contactId": "cnt_1793834856_590",
+      "evenementId": "evt_dakar_gala_2026",
+      "jetonGalerie": "pl_992156_4856",
+      "nom": "M. le Superviseur",
+      "reconnuLe": "2026-11-04T23:27:36Z",
       "nbPhotos": 2,
       "statutRecuperation": "en_attente"
     }
@@ -640,6 +683,42 @@
       "versionTexte": "v2.1",
       "horodatage": "2026-11-04T22:35:10Z",
       "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793834856_1",
+      "participationId": "part_1793834856_285",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T23:27:36Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793834856_2",
+      "participationId": "part_1793834856_285",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T23:27:36Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793834856_1",
+      "participationId": "part_1793834856_615",
+      "type": "photos",
+      "accepte": true,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T23:27:36Z",
+      "borneId": "borne_ipad_01"
+    },
+    {
+      "id": "cst_1793834856_2",
+      "participationId": "part_1793834856_615",
+      "type": "marketing",
+      "accepte": false,
+      "versionTexte": "v2.1",
+      "horodatage": "2026-11-04T23:27:36Z",
+      "borneId": "borne_ipad_01"
     }
   ],
   "liensPhotos": [
@@ -937,6 +1016,70 @@
       "photoId": "photo_1793814422_63",
       "similarite": 93.0,
       "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_987",
+      "participationId": "part_1793834856_285",
+      "photoId": "photo_1793814422_82",
+      "similarite": 97.2,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_151",
+      "participationId": "part_1793834856_285",
+      "photoId": "photo_1793814421_28",
+      "similarite": 88.9,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_727",
+      "participationId": "part_1793834856_285",
+      "photoId": "photo_1793814421_58",
+      "similarite": 89.8,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_883",
+      "participationId": "part_1793834856_285",
+      "photoId": "photo_1793814420_68",
+      "similarite": 88.3,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_151",
+      "participationId": "part_1793834856_615",
+      "photoId": "photo_1793814422_93",
+      "similarite": 96.5,
+      "zone": "sure",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_807",
+      "participationId": "part_1793834856_615",
+      "photoId": "photo_1793814422_42",
+      "similarite": 88.5,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_704",
+      "participationId": "part_1793834856_615",
+      "photoId": "photo_1793814422_62",
+      "similarite": 90.6,
+      "zone": "probable",
+      "statut": "actif"
+    },
+    {
+      "id": "lnk_1793834856_293",
+      "participationId": "part_1793834856_615",
+      "photoId": "photo_1793814422_63",
+      "similarite": 89.8,
+      "zone": "probable",
       "statut": "actif"
     }
   ]
