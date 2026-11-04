@@ -44,3 +44,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, error: "Erreur lors de l'enregistrement" }, { status: 500 });
   }
 }
+

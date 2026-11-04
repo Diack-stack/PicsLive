@@ -100,7 +100,10 @@ export async function POST(request: Request) {
     const sureMatches = searchResult.matches.filter((m) => m.zone === "sure");
     const probableMatches = searchResult.matches.filter((m) => m.zone === "probable");
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    // Auto-détection de l'URL réelle (Vercel ou local)
+    const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || "pics-live-blue.vercel.app";
+    const proto = request.headers.get("x-forwarded-proto") || (host.includes("localhost") ? "http" : "https");
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || `${proto}://${host}`;
     const galleryUrl = `${appUrl}/galerie/${jetonGalerie}`;
 
     let qrCode: string | undefined;
@@ -111,7 +114,7 @@ export async function POST(request: Request) {
         color: { dark: "#070D18", light: "#FFFFFF" },
       });
     } catch {
-      // Fallback si canvas non disponible
+      qrCode = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&color=070D18&bgcolor=FFFFFF&margin=10&data=${encodeURIComponent(galleryUrl)}`;
     }
 
     return NextResponse.json({
@@ -125,10 +128,10 @@ export async function POST(request: Request) {
       engine: searchResult.engineName,
       durationMs: searchResult.durationMs,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error in recognize API:", error);
     return NextResponse.json(
-      { success: false, error: "Erreur lors du traitement biométrique" },
+      { success: false, error: error?.message || "Erreur lors du traitement biométrique" },
       { status: 500 }
     );
   }

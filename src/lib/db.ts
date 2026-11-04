@@ -148,20 +148,59 @@ function ensureDbFile(): void {
   }
 }
 
+let inMemoryDb: DatabaseSchema | null = null;
+const TMP_DB_PATH = path.join("/tmp", "picslive_db.json");
+
 export function getDb(): DatabaseSchema {
-  ensureDbFile();
-  try {
-    const raw = fs.readFileSync(DB_PATH, "utf-8");
-    return JSON.parse(raw) as DatabaseSchema;
-  } catch (err) {
-    console.error("Error reading database:", err);
-    return INITIAL_DB;
+  if (inMemoryDb) {
+    return inMemoryDb;
   }
+
+  // 1. Essayer le fichier local data/db.json
+  try {
+    ensureDbFile();
+    if (fs.existsSync(DB_PATH)) {
+      const raw = fs.readFileSync(DB_PATH, "utf-8");
+      inMemoryDb = JSON.parse(raw) as DatabaseSchema;
+      return inMemoryDb;
+    }
+  } catch (_err) {
+    // Lecture fichier local impossible
+  }
+
+  // 2. Essayer le cache temporaire Vercel (/tmp)
+  try {
+    if (fs.existsSync(TMP_DB_PATH)) {
+      const raw = fs.readFileSync(TMP_DB_PATH, "utf-8");
+      inMemoryDb = JSON.parse(raw) as DatabaseSchema;
+      return inMemoryDb;
+    }
+  } catch (_err) {
+    // Lecture /tmp impossible
+  }
+
+  // 3. Fallback sur INITIAL_DB
+  inMemoryDb = JSON.parse(JSON.stringify(INITIAL_DB));
+  return inMemoryDb!;
 }
 
 export function saveDb(data: DatabaseSchema): void {
-  ensureDbFile();
-  fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), "utf-8");
+  inMemoryDb = data;
+
+  // 1. Sauvegarde dans /tmp (zone inscriptible officielle sur Vercel serverless)
+  try {
+    fs.writeFileSync(TMP_DB_PATH, JSON.stringify(data, null, 2), "utf-8");
+  } catch (_err) {
+    // Ignore si non disponible
+  }
+
+  // 2. Sauvegarde sur le disque local (environnement dev / node local)
+  try {
+    ensureDbFile();
+    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2), "utf-8");
+  } catch (_err) {
+    // Ignorer silencieusement si read-only sur Vercel
+  }
 }
 
 export const dbService = {
