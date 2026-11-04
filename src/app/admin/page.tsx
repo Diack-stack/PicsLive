@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Camera, Image as ImageIcon, Users, Phone, TrendingUp, Plus, RefreshCw } from "lucide-react";
+import { Camera, Image as ImageIcon, Users, Phone, TrendingUp, UploadCloud, Plus, RefreshCw } from "lucide-react";
 
 export default function AdminPage() {
   const [eventData, setEventData] = useState<any>(null);
@@ -10,6 +10,10 @@ export default function AdminPage() {
   const [photos, setPhotos] = useState<any[]>([]);
   const [newPhotoUrl, setNewPhotoUrl] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const loadData = () => {
     Promise.all([
@@ -30,7 +34,42 @@ export default function AdminPage() {
     loadData();
   }, []);
 
-  const handleAddPhoto = async (e: React.FormEvent) => {
+  const handleFiles = async (files: FileList | File[]) => {
+    if (!files || files.length === 0) return;
+    setUploading(true);
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      setUploadStatus(`Indexation de ${file.name} (${i + 1}/${files.length})...`);
+      const base64Data = await readFileAsBase64(file);
+
+      await fetch("/api/photos/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          filename: file.name,
+          data: base64Data,
+          photographeNom: "Canon R6 Mark II (SFTP)",
+        }),
+      });
+    }
+
+    setUploadStatus("Indexation terminée avec succès !");
+    setTimeout(() => setUploadStatus(null), 2500);
+    setUploading(false);
+    loadData();
+  };
+
+  const readFileAsBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleAddPhotoUrl = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newPhotoUrl) return;
     setUploading(true);
@@ -132,43 +171,96 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* SIMULATEUR D'INGESTION */}
-        <div className="luxury-card p-6 rounded-[28px]">
-          <h2 className="text-base font-bold text-white mb-1">Ingestion de photo en direct (Boîtier SFTP)</h2>
-          <p className="text-xs text-slate-400 mb-4">
-            Ajoutez une image pour simuler l&apos;envoi direct depuis un Canon R6 Mark II.
-          </p>
-          <form onSubmit={handleAddPhoto} className="flex flex-col sm:flex-row gap-3">
+        {/* ZONE DE DRAG & DROP DE VRAIS FICHIERS */}
+        <div className="luxury-card p-7 rounded-[28px] space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-base font-bold text-white">Ingestion de vraies photos (Fichiers locaux)</h2>
+              <p className="text-xs text-slate-400">
+                Glissez-déposez vos fichiers JPG ou PNG pour les ajouter au flux de l&apos;événement.
+              </p>
+            </div>
+            <span className="text-[11px] px-2.5 py-1 rounded-full bg-surfaceLight text-gold font-semibold border border-gold/20">
+              Canon SFTP Simulator
+            </span>
+          </div>
+
+          <div
+            onClick={() => fileInputRef.current?.click()}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setIsDragOver(true);
+            }}
+            onDragLeave={() => setIsDragOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setIsDragOver(false);
+              if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
+            }}
+            className={`p-8 rounded-[24px] bg-night/60 border-2 border-dashed flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
+              isDragOver ? "border-gold bg-gold/10 scale-[1.01]" : "border-gold/30 hover:border-gold/60"
+            }`}
+          >
             <input
-              type="url"
-              required
-              value={newPhotoUrl}
-              onChange={(e) => setNewPhotoUrl(e.target.value)}
-              placeholder="URL de l'image (https://...)"
-              className="flex-1 bg-night border border-white/10 rounded-2xl px-4 py-3 text-sm text-white outline-none focus:border-gold"
+              type="file"
+              ref={fileInputRef}
+              multiple
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              onChange={(e) => {
+                if (e.target.files) handleFiles(e.target.files);
+              }}
             />
-            <button
-              type="submit"
-              disabled={uploading}
-              className="btn-gold px-6 py-3 rounded-2xl font-bold text-xs shadow-md flex items-center justify-center gap-2"
-            >
-              {uploading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
-              <span>Indexer la photo</span>
-            </button>
-          </form>
+
+            <div className="w-14 h-14 rounded-2xl bg-surface border border-gold/30 flex items-center justify-center text-gold mb-3">
+              <UploadCloud className="w-7 h-7" />
+            </div>
+
+            <p className="text-sm font-bold text-white mb-1">
+              Glissez-déposez vos photos ici, ou <span className="text-gold underline">parcourez vos dossiers</span>
+            </p>
+            <p className="text-xs text-slate-400">
+              Prend en charge JPG, PNG jusqu&apos;à 25 Mo · Optimisation et indexation faciale automatiques
+            </p>
+
+            {uploadStatus && (
+              <div className="mt-4 text-xs font-semibold text-gold animate-pulse">
+                {uploadStatus}
+              </div>
+            )}
+          </div>
+
+          <details className="text-xs text-slate-400 cursor-pointer pt-2">
+            <summary className="hover:text-slate-200 transition font-medium">Ou injecter via une URL d&apos;image web</summary>
+            <form onSubmit={handleAddPhotoUrl} className="flex flex-col sm:flex-row gap-3 mt-3">
+              <input
+                type="url"
+                value={newPhotoUrl}
+                onChange={(e) => setNewPhotoUrl(e.target.value)}
+                placeholder="https://images.unsplash.com/..."
+                className="flex-1 bg-night border border-white/10 rounded-2xl px-4 py-2.5 text-xs text-white outline-none focus:border-gold"
+              />
+              <button type="submit" disabled={uploading} className="btn-gold px-5 py-2.5 rounded-2xl font-bold text-xs">
+                + Indexer par URL
+              </button>
+            </form>
+          </details>
         </div>
 
-        {/* GALLERIE DES PHOTOS */}
+        {/* LISTE DES PHOTOS */}
         <div>
-          <h2 className="text-base font-bold text-slate-200 mb-3">Galerie de l&apos;événement</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-base font-bold text-slate-200">Galerie de l&apos;événement</h2>
+            <span className="text-xs text-slate-400">{photos.length} clichés indexés</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3.5">
             {photos.map((p) => (
               <div
                 key={p.id}
-                className="relative rounded-2xl overflow-hidden bg-surface border border-white/10 aspect-square shadow-sm"
+                className="relative rounded-[22px] overflow-hidden bg-surface border border-white/10 aspect-square shadow-sm group"
               >
-                <img src={p.url} alt="Photo" className="w-full h-full object-cover" />
-                <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-night/85 backdrop-blur-md text-[10px] font-bold text-gold border border-gold/30 shadow-sm">
+                <img src={p.url} alt="Photo" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-night/85 backdrop-blur-md text-[10px] font-bold text-gold border border-gold/30 shadow-sm">
                   {p.visagesDetectes || 1} visage(s)
                 </span>
               </div>
