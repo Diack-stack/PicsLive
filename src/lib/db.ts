@@ -79,7 +79,7 @@ const INITIAL_DB: DatabaseSchema = {
       statut: "indexée",
       visagesDetectes: 2,
       personTag: "jack",
-      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
+      nomPersonne: "Invité d'honneur",
     },
     {
       id: "photo_1793814421_28",
@@ -90,7 +90,7 @@ const INITIAL_DB: DatabaseSchema = {
       statut: "indexée",
       visagesDetectes: 2,
       personTag: "jack",
-      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
+      nomPersonne: "Invité d'honneur",
     },
     {
       id: "photo_1793814421_58",
@@ -101,7 +101,7 @@ const INITIAL_DB: DatabaseSchema = {
       statut: "indexée",
       visagesDetectes: 1,
       personTag: "jack",
-      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
+      nomPersonne: "Invité d'honneur",
     },
     {
       id: "photo_1793814420_68",
@@ -112,7 +112,7 @@ const INITIAL_DB: DatabaseSchema = {
       statut: "indexée",
       visagesDetectes: 1,
       personTag: "jack",
-      nomPersonne: "Jack (Costume, lunettes, chemise blanche)",
+      nomPersonne: "Invité d'honneur",
     },
   ],
   visages: [

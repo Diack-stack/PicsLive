@@ -82,37 +82,37 @@ export default function HomePage() {
 
         {/* COMPOSITION EN ÉVENTAIL 3D (PHOTOSTACK) */}
         <div className="relative w-full max-w-3xl h-64 sm:h-76 flex items-center justify-center mb-16">
-          {/* Carte Arrière Gauche : Superviseur */}
+          {/* Carte Arrière Gauche */}
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
               src="/uploads/photo_1793814422_105.jpg"
-              alt="Superviseur"
+              alt="Gala Dakar"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
             <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Superviseur
+              Gala Dakar 2026
             </span>
           </div>
 
-          {/* Carte Arrière Droite : Jack Photoshoot */}
+          {/* Carte Arrière Droite */}
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
               src="/uploads/photo_1793814420_156.JPG"
-              alt="Gala CreatifPics"
+              alt="Soirée Privée"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
             <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Gala CreatifPics
+              Soirée Privée
             </span>
           </div>
 
-          {/* Carte Centrale En Vedette : Jack (Costume, lunettes, chemise blanche) */}
+          {/* Carte Centrale En Vedette */}
           <div className="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-gold/50 transform hover:scale-105 transition-all duration-300 z-10">
             <img
               src="/uploads/photo_1793814421_653.JPG"
-              alt="Jack"
+              alt="Cliché invité"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent" />
@@ -121,7 +121,6 @@ export default function HomePage() {
               Reconnu 98.8%
             </div>
             <div className="absolute bottom-4 left-4 text-left">
-              <span className="text-[10px] uppercase font-bold tracking-wider text-gold">Jack</span>
               <p className="text-xs font-semibold text-white">4 photos livrées en direct</p>
             </div>
           </div>
