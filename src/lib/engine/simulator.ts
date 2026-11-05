@@ -1,5 +1,6 @@
 import { FaceEngine, DetectedFace, SearchResult, FaceMatch } from "./types";
 import { getDb } from "../db";
+import { PhotoData } from "../types";
 
 export class SimulatorFaceEngine implements FaceEngine {
   readonly name = "Simulator Engine (PicsLive Local Mock)";
