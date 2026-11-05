@@ -244,29 +244,17 @@ HTML_HUB = """<!DOCTYPE html>
     <div class="relative w-full max-w-3xl h-64 sm:h-76 flex items-center justify-center mb-16 photo-stack">
       <!-- Carte Arrière Gauche -->
       <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
-        <img src="/uploads/photo_1793814422_105.jpg" alt="Gala Dakar" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
-        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Gala Dakar 2026</span>
+        <img src="/uploads/photo_1793814422_105.jpg" alt="Photo événement" class="w-full h-full object-cover">
       </div>
 
       <!-- Carte Arrière Droite -->
       <div class="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
-        <img src="/uploads/photo_1793814420_156.JPG" alt="Soirée Privée" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/85 via-transparent to-transparent"></div>
-        <span class="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">Soirée Privée</span>
+        <img src="/uploads/photo_1793814420_156.JPG" alt="Photo événement" class="w-full h-full object-cover">
       </div>
 
       <!-- Carte Centrale En Vedette -->
       <div class="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-[#D4AF37]/50 transform hover:scale-105 transition-all duration-300 z-10">
-        <img src="/uploads/photo_1793814421_653.JPG" alt="Cliché invité" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#070D18]/90 via-transparent to-transparent"></div>
-        <div class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-[#070D18]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-extrabold text-[#D4AF37] shadow-sm flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-          Reconnu 98.8%
-        </div>
-        <div class="absolute bottom-4 left-4 text-left">
-          <p class="text-xs font-semibold text-white">4 photos livrées en direct</p>
-        </div>
+        <img src="/uploads/photo_1793814421_653.JPG" alt="Photo vedette" class="w-full h-full object-cover">
       </div>
     </div>
 

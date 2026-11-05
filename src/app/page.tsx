@@ -86,43 +86,27 @@ export default function HomePage() {
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform -rotate-12 -translate-x-32 sm:-translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
               src="/uploads/photo_1793814422_105.jpg"
-              alt="Gala Dakar"
+              alt="Photo événement"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
-            <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Gala Dakar 2026
-            </span>
           </div>
 
           {/* Carte Arrière Droite */}
           <div className="absolute w-44 sm:w-56 h-56 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transform rotate-12 translate-x-32 sm:translate-x-44 translate-y-3 transition-transform duration-500 hover:-translate-y-1">
             <img
               src="/uploads/photo_1793814420_156.JPG"
-              alt="Soirée Privée"
+              alt="Photo événement"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-transparent to-transparent" />
-            <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white tracking-wide">
-              Soirée Privée
-            </span>
           </div>
 
           {/* Carte Centrale En Vedette */}
           <div className="absolute w-48 sm:w-60 h-60 sm:h-72 rounded-[32px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] border-2 border-gold/50 transform hover:scale-105 transition-all duration-300 z-10">
             <img
               src="/uploads/photo_1793814421_653.JPG"
-              alt="Cliché invité"
+              alt="Photo vedette"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent" />
-            <div className="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-night/85 backdrop-blur-md border border-gold/40 text-[10px] font-extrabold text-gold shadow-sm flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Reconnu 98.8%
-            </div>
-            <div className="absolute bottom-4 left-4 text-left">
-              <p className="text-xs font-semibold text-white">4 photos livrées en direct</p>
-            </div>
           </div>
         </div>
 
